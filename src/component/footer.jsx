@@ -1,5 +1,5 @@
 import React from 'react';
-import '../css/Footer.css';
+import '../css/footer.css';
 import { useNavigate } from "react-router-dom";
 import { FaWhatsapp, FaEnvelope, FaPhone, FaFacebookF, FaInstagram, FaTwitter, FaAddressBook } from 'react-icons/fa';
 import { useSiteSettings } from '../context/SiteSettingsContext';
