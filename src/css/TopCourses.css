@@ -16,28 +16,32 @@
 }
 
 .top-courses-header h2 {
- background: linear-gradient(90deg, #0D0D0D 30%, #6600CC 70%); /* Adjust colors as needed */
+  background: linear-gradient(
+    90deg,
+    #0d0d0d 30%,
+    #6600cc 70%
+  ); /* Adjust colors as needed */
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-size: 60px;
   line-height: 64px;
   font-weight: 700;
-  font-style: 'League Spartan';
+  font-style: "League Spartan";
 }
 
 .top-courses-view-all {
   padding: 16px 35px;
-  border: 2px solid #6600CC;
+  border: 2px solid #6600cc;
   border-radius: 12px;
   font-weight: 900;
   font-size: 22px;
   text-decoration: none;
-  color: #6600CC;
+  color: #6600cc;
   transition: all 0.3s ease;
 }
 
 .top-courses-view-all:hover {
-  background-color: #6600CC;
+  background-color: #6600cc;
   color: white;
 }
 
@@ -56,16 +60,22 @@
 }
 
 @media (max-width: 768px) {
+  .top-courses-view-all {
+    font-size: 17px;
+    padding: 10px 20px;
+    margin-top: -12px;
+    width: 99px;
+    text-align: center;
+  }
   .top-courses-section {
     padding: 20px 0px;
     /* margin-top: 10vh; */
     /* margin-bottom: 20vh; */
     margin: 0;
-    
   }
 
-    .top-courses-header {
-    flex-direction: row;           /* Keep row direction */
+  .top-courses-header {
+    flex-direction: row; /* Keep row direction */
     justify-content: space-between; /* Push items to edges */
     align-items: center;
     gap: 10px;

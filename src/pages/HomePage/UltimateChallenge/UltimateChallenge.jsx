@@ -1,6 +1,8 @@
 import React from 'react'
 import './UltimateChallenge.css'
+import { useNavigate } from 'react-router-dom'
 const UltimateChallenge = () => {
+    const navigate = useNavigate()
     return (
         <>
             <div className='ultimate_challenge_wrapper' style={{
@@ -11,7 +13,7 @@ const UltimateChallenge = () => {
                     <div className='ultimate_challenge_text_wrapper'>
                         <h1>Ready for the Ultimate Challenge?</h1>
                         <h2>Built for endurance, strength & every obstacle <br/>ahead.</h2>
-                        <button >Register Now</button>
+                        <button onClick={(()=>navigate('/auth'))}>Register Now</button>
                     </div>
                     <div className='ultimate_challenge_image_wrapper'>
                         {/* <div className='ultimate_img'>

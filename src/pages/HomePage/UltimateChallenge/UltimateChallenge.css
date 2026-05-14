@@ -79,3 +79,24 @@
     height: 100%;
     object-fit: cover;
 }
+
+@media(max-width:699px){
+  .ultimate_challenge_text_wrapper{
+    width: 100% !important;
+  }
+  .ultimate_challenge_text_wrapper h1{
+    text-align: center;
+    font-size: 32px;
+  }
+  .ultimate_challenge_image_wrapper{
+    display: none;
+  }
+  .ultimate_challenge_text_wrapper h2{
+    text-align: center;
+    font-size: 22px;
+    line-height: 30px;
+  }
+  .ultimate_challenge_text_wrapper button{
+    margin-inline: auto;
+  }
+}

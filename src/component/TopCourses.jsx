@@ -81,7 +81,7 @@ export default function TopCourses() {
         slidesPerGroup={2}
         breakpoints={{
           0: {
-            slidesPerView: 2, // 1 full + part of 2nd
+            slidesPerView: 1, // 1 full + part of 2nd
           },
           480: {
             slidesPerView: 1,

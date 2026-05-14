@@ -66,6 +66,30 @@
 
 /* ─────────────── Responsive styles ─────────────── */
 @media (max-width: 768px) {
+  .calendar-time-selector {
+    display: flex
+;
+    gap: 40px;
+    flex-direction: column;
+    padding: 20px;
+    border-bottom: 1px solid #ECECEC;
+}
+.calendar-time-selector-date-section{
+  border: 1px solid #ECECEC;
+  padding: 20px !important;
+  border-radius: 20px;
+  min-width: fit-content !important;
+}
+.calendar-time-selector-time-section{
+  border: 1px solid #ECECEC;
+  padding: 20px !important;
+  border-radius: 20px;
+  min-width: fit-content;
+}
+.calendar-time-selector-time-section{
+    min-width: fit-content !important;
+
+}
 .booking-wrapper {
   max-width: 1200px;
   width: 100%;

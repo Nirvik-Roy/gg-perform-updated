@@ -877,6 +877,10 @@
 }
 
 @media (max-width: 768px) {
+  .about_gg_perform_page_heading h2{
+    line-height: 55px;
+    font-size: 50px;
+  }
   .ggexp_shell {
     padding: 70px 0;
   }

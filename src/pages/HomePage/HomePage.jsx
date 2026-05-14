@@ -463,12 +463,13 @@ function HomePage() {
               onChange={handleChange}
             ></textarea>
           </div>
-          <button style={{ width: "20%", }} type="submit" className="submit-button" disabled={isSubmitting || !isFormValid()}>
+          
+          <button style={{ width: "200px", }} type="submit" className="submit-button explore_btn56" disabled={isSubmitting || !isFormValid()}>
             {isSubmitting ? "Submitting..." : "Join the Hub"}
           </button>
 
 
-          <button style={{ width: "20%", marginLeft: '20px', background: 'transparent', border: '1px solid #6700cb', color: '#6700cb' }} onClick={(() => navigate('/training'))} className="submit-button " >
+          <button  style={{ width: "200px", marginLeft: '20px', background: 'transparent', border: '1px solid #6700cb', color: '#6700cb' }} onClick={(() => navigate('/training'))} className="submit-button explore_btn56" >
             {"Explore Program"}
           </button>
 

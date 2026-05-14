@@ -156,6 +156,10 @@
 }
 
 @media (max-width: 768px) {
+  .footer-credit {
+  cursor: pointer;
+  margin-left: 0;
+}
 
   /* .footer-link-wrapper {
     flex-direction: column;
