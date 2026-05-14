@@ -4,6 +4,8 @@
   margin: 50px 0;
   border-radius: 20px;
   position: relative;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 .background_overlay {
   position: absolute;

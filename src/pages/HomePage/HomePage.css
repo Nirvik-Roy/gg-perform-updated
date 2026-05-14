@@ -352,9 +352,9 @@
   justify-content: space-between;
   /* align-items: flex-start; */
   align-items: stretch;
-  padding: 50px 49px;
+  padding: 40px 49px;
   flex-wrap: wrap;
-  margin-top: 5vh;
+  /* margin-top: 5vh; */
   flex-wrap: wrap;
 }
 
@@ -686,7 +686,7 @@
     flex-direction: column;
     padding: 10px 0px;
     gap: 40px;
-    margin-top: 104px;
+    margin-top: 0;
   }
 
   .image-section {
@@ -778,6 +778,11 @@
 }
 
 @media (max-width: 480px) {
+  .faq-right {
+
+  min-height: auto;
+  height: auto;
+}
   .explore_btn56{
     width: 100% !important;
     margin-left: 0 !important;

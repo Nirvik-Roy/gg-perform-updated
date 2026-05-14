@@ -29,6 +29,7 @@
 
 .fq8-toggle-btn {
   width: 40px;
+  min-width: 40px;
   height: 40px;
   border-radius: 50%;
   border: 2px solid #7a35ff;
@@ -51,4 +52,10 @@
 
 .fq8-active .fq8-answer {
   display: block;
+}
+
+@media(max-width:480px){
+  .fq8-question{
+    font-size: 16px;
+  }
 }

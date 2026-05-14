@@ -14,7 +14,6 @@ const AllEvents = () => {
     const { setBannerTitle } = useBanner();
     useEffect(() => {
         setBannerTitle("Events")
-
     }, [location.pathname])
     const fetchEvent = async () => {
         setloading(true)

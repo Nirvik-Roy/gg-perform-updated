@@ -536,9 +536,9 @@ background-color: white;
 } */
 
 @media(max-width:768px){
-  .custom-header{
+  /* .custom-header{
     height: 90vh;
-  }
+  } */
   .hero-center-content{width: 100%;}
   .hero-title{
     font-size: 40px !important;

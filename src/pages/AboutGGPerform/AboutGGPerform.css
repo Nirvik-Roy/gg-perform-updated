@@ -38,7 +38,7 @@
   font-size: 14px;
   font-weight: 700;
   letter-spacing: 0.12em;
-  text-transform: uppercase;
+  text-transform: capitalize;
   color: rgba(255, 255, 255, 0.6);
   font-family: "Inter", "Segoe UI", Arial, sans-serif;
 }
@@ -201,7 +201,7 @@
   font-weight: 700;
   color: rgba(255, 255, 255, 0.6);
   margin-bottom: 18px;
-  text-transform: uppercase;
+  text-transform: capitalize;
   letter-spacing: 0.06em;
 }
 
@@ -922,6 +922,12 @@
 
   .ggexp_bottom_statement p {
     max-width: 100%;
+  }
+  .ggabt_philosophy_shell, .ggabt_different_shell, .ggabt_serve_shell, .ggabt_mission_shell{
+    padding: 40px 0;
+  }
+  .ggexp_shell{
+    padding: 40px 0;
   }
 }
 
