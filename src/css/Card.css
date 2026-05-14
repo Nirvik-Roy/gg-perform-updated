@@ -1,0 +1,381 @@
+/* .card {
+  border: 1px solid #eee;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.3s;
+}
+
+.card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.card-img-wrapper {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+}
+
+.card-img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card-icons {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.card-icons svg {
+  background: black;
+  color: white;
+  padding: 8px;
+  border-radius: 50%;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.card-body {
+  padding: 16px;
+}
+
+.card-body h4 {
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+
+.card-body p {
+  font-size: 14px;
+  color: #666;
+}
+
+.card-rating {
+  margin: 10px 0;
+}
+
+.card-price {
+  display: flex;
+  gap: 8px;
+  font-weight: bold;
+}
+
+.card-price .original {
+  text-decoration: line-through;
+  color: #aaa;
+}
+
+.card-price .discounted {
+  color: #00c853;
+} */
+
+
+.card1-conatiner {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1.5vh;
+  width: fit-content;
+  padding: 6% 6%;
+  border-radius: 12px;
+  width: 286px;
+  /* ✅ Modern subtle shadow */
+  /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);00 */
+  border: 1px solid #d8d8d8;
+  background-color: #fff; /* Optional: add if the background is not white */
+}
+
+.card1-image {
+  width: 286px;
+  height: 230px;
+  /* align-self: center; */
+  overflow: hidden;
+  border-radius: 12px;
+  position: relative;
+}
+
+.card1-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.card1-rating .star-rating{
+  margin-bottom: 0px;
+}
+.card1-edit-icon {
+  position: absolute;
+  top: 5%;
+  right: 3%;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  background-color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  padding: 2%;
+}
+@media (max-width: 400px) {
+  .card1-conatiner {
+    width: 72vw;
+    /* margin-top: 4vh; */
+    padding: 4vw;
+    row-gap: 1.2rem;
+    margin: 0 auto; /* ✅ Center horizontally */
+  }
+  .card1-image img {
+  width: 72vw;
+  height: 100%;
+  cursor: pointer;
+}
+.card1-edit-icon {
+     top: 5% !important;
+  right: 12% !important;
+  width: 5vw !important;
+  height: 5vw !important;
+  }
+
+  .card1-delete-icon {
+    top: 25% !important;
+    right: 12% !important;
+    width: 5vw !important;
+    height: 5vw !important;
+    /* padding: 1vw !important; */
+  }
+}
+
+.card1-edit-icon img {
+  width: 100%;
+}
+
+.card1-delete-icon {
+  position: absolute;
+  top: 25%;
+  right: 3%;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  background-color: #FFFFFF;
+  border-radius: 50%;
+    display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2%;
+}
+
+.card1-delete-icon img {
+  width: 100%;
+}
+
+.card1-title {
+  font-size: 16px;
+  font-weight: 500;
+  color: #0D0D0D;
+  margin: 0%;
+}
+
+.card1-description {
+  font-size: 14px;
+  font-weight: 500;
+  color: #0D0D0D;
+  margin: 0%;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.2;
+}
+
+.card1-category {
+  font-size: 12px;
+  font-weight: 400;
+  color: #343434;
+  margin: 0%;
+}
+
+.card1-price-container {
+  display: flex;
+  flex-direction: row;
+  column-gap: 2%;
+}
+
+.card1-price-container p {
+  margin: 0%;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.card1-price-container .card1-new-price {
+  color: #6600CC;
+}
+
+.card1-price-container .card1-old-price {
+  color: #6B6B6B;
+  text-decoration: line-through;
+}
+
+.card1-tag-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 8px 0;
+}
+
+.card1-tag {
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 0%;
+  padding: 4px 8px;
+  font-size: 12px;
+  border-radius: 5px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.card1-rating {
+  display: flex;
+  flex-direction: row;
+}
+
+.star-rating {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.star {
+  font-size: 24px;
+  line-height: 1;
+}
+
+.full-star {
+  color: #FFD700;
+}
+
+.empty-star {
+  color: #E0E0E0;
+}
+
+.half-star {
+  position: relative;
+  display: inline-block;
+}
+
+.star-half {
+  color: #FFD700;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 50%;
+  overflow: hidden;
+}
+
+.star-empty {
+  color: #E0E0E0;
+}
+
+.rating-value {
+  font-size: 12px;
+  color: #666;
+  margin-left: 5px;
+}
+
+/* Wishlist state styling */
+.card1-edit-icon {
+  transition: all 0.3s ease;
+}
+
+.card1-edit-icon.in-wishlist {
+  background-color: #ff4757 !important;
+  color: white !important;
+  transform: scale(1.05);
+  box-shadow: 0 2px 8px rgba(255, 71, 87, 0.3);
+}
+
+.card1-edit-icon.in-wishlist svg {
+  color: white !important;
+}
+
+/* Hover effects for wishlist icon */
+.card1-edit-icon:hover {
+  transform: scale(1.08);
+  background-color: #ff6b7a;
+  color: white;
+  box-shadow: 0 4px 12px rgba(255, 107, 122, 0.4);
+}
+
+.card1-edit-icon:hover svg {
+  color: white;
+}
+
+.card1-edit-icon.in-wishlist:hover {
+  background-color: #ff3742 !important;
+  transform: scale(1.1);
+}
+
+/* Animation classes */
+.animate-bounce {
+  animation: bounceScale 0.6s ease-out;
+}
+
+@keyframes bounceScale {
+  0% { transform: scale(1); }
+  25% { transform: scale(1.2); }
+  50% { transform: scale(0.9); }
+  75% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+/* State-based styling for cart and wishlist buttons */
+.card1-edit-icon {
+  transition: all 0.3s ease;
+}
+
+.card1-edit-icon.in-wishlist {
+  background-color: #ff4757 !important;
+  color: white !important;
+  transform: scale(1.1);
+}
+
+.card1-edit-icon.in-wishlist svg {
+  color: white;
+}
+
+.card1-delete-icon {
+  transition: all 0.3s ease;
+}
+
+.card1-delete-icon.in-cart {
+  background-color: #6600CC !important;
+  color: white !important;
+  transform: scale(1.1);
+}
+
+.card1-delete-icon.in-cart svg {
+  color: white;
+}
+
+/* Hover effects */
+.card1-edit-icon:hover {
+  transform: scale(1.05);
+  background-color: #ff6b7a;
+  color: white;
+}
+
+.card1-delete-icon:hover {
+  transform: scale(1.05);
+  background-color: #7f1dcc;
+  color: white;
+}

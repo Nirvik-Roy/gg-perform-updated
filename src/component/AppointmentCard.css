@@ -1,0 +1,176 @@
+.appointment-container {
+    width: 100%;
+    padding: 32px 24px;
+    background: #ffffff;
+    border: 1px solid #ececec;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+  
+  .appointment-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #f0f0f0;
+    border-radius: 10px;
+    padding: 12px 20px;
+    background-color: #ffffff;
+  }
+  
+  .appointment-date {
+    width: 56px;
+    height: 56px;
+    border-radius: 8px;
+    border: 2px solid #4e9eff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 14px;
+    color: #0051c3;
+  }
+  
+  .appointment-date.completed {
+    border-color: #05823e;
+    color: #05823e;
+  }
+  
+  .appointment-date.cancelled {
+    border-color: #ea3e3e;
+    color: #ea3e3e;
+  }
+  
+  .appointment-details {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex: 1;
+    margin-left: 20px;
+    font-size: 14px;
+    color: #000000;
+  }
+  
+  .clock-icon {
+    font-size: 18px;
+  }
+  
+  .status-badge.completed {
+    background-color: #05823e;
+    color: white;
+    padding: 2px 8px;
+    font-size: 12px;
+    border-radius: 4px;
+  }
+  
+  .status-text.cancelled {
+    color: #a3a3a3;
+    font-weight: 600;
+    font-size: 14px;
+  }
+  
+  .appointment-actions {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+  }
+  
+  .cancel-button {
+    background: none;
+    border: none;
+    font-weight: 600;
+    font-size: 14px;
+    color: #000000;
+    cursor: pointer;
+  }
+  
+  .reschedule-button {
+    background: none;
+    border: none;
+    font-weight: 600;
+    font-size: 14px;
+    color: #6b38fb;
+    cursor: pointer;
+  }
+  
+  .reschedule-button.muted {
+    color: #a3a3a3;
+  }
+
+/* Mobile Responsive Styles */
+@media (max-width: 480px) {
+  .appointment-container {
+    padding: 20px 16px;
+    gap: 20px;
+  }
+
+  .appointment-card {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+    padding: 16px;
+  }
+
+  .appointment-top-left {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .appointment-date {
+    width: 48px;
+    height: 48px;
+    font-size: 12px;
+    flex-shrink: 0;
+  }
+
+  .appointment-details {
+    margin-left: 0;
+    gap: 8px;
+    font-size: 13px;
+    flex-wrap: wrap;
+    flex: 1;
+    align-items: center;
+  }
+
+  .clock-icon {
+    font-size: 16px;
+  }
+
+  .clock-icon img {
+    width: 16px;
+    height: 16px;
+  }
+
+  .status-badge.completed {
+    font-size: 11px;
+    padding: 1px 6px;
+  }
+
+  .status-text.cancelled {
+    font-size: 13px;
+  }
+
+  .appointment-actions {
+    gap: 12px;
+    justify-content: flex-end;
+    align-self: flex-end;
+  }
+
+  .cancel-button {
+    font-size: 13px;
+    padding: 8px 12px;
+  }
+
+  .reschedule-button {
+    font-size: 13px;
+    padding: 8px 12px;
+  }
+
+ 
+}
+
+  

@@ -1,0 +1,445 @@
+.slotmodal-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 999999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(8px);
+    background-color: rgba(0, 0, 0, 0.12);
+  }
+  
+  .slotmodal-container {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    padding: 50px;
+    width: 1152px;
+    max-width: 95vw;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    position: relative;
+    overflow-x: hidden;
+  }
+  
+  .slotmodal-close-button {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    font-size: 1.5rem;
+    color: #9ca3af;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .slotmodal-close-button:hover {
+    color: #374151;
+  }
+  
+  .slotmodal-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+  }
+  
+  .slotmodal-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .slotmodal-card {
+    display: flex;
+    gap: 32px;
+    width: 100%;
+    max-width: 100%;
+    border: 1px solid #d9d9d9;
+    border-radius: 12px;
+    padding: 24px;
+    background-color: white;
+    overflow: hidden;
+  }
+  
+  .slotmodal-calendar {
+    width: 476px;
+    max-width: 100%;
+    overflow: hidden;
+  }
+  
+  .slotmodal-section-title {
+    font-weight: 600;
+    font-size: 1.125rem;
+    margin-bottom: 0.5rem;
+    text-align: left;
+  }
+  
+  .slotmodal-datepicker-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 24px 12px;
+    margin-bottom: 4px;
+  }
+  
+  .slotmodal-chevron {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 9999px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    cursor: pointer;
+  }
+  
+  .slotmodal-chevron:hover {
+    background-color: #f3f4f6;
+  }
+  
+  .slotmodal-month-label {
+    font-weight: bold;
+    font-size: 1.125rem;
+    color: #222;
+  }
+  
+  .slotmodal-day {
+    font-weight: 600;
+    font-size: 1rem;
+  }
+  
+  .slot-available {
+    color: green;
+  }
+  
+  .slot-unavailable {
+    color: red;
+  }
+  
+  .slot-past {
+    color: #a1a1aa;
+    text-decoration: line-through;
+  }
+  
+  .slot-selected {
+    background-color: #6C1CD2 !important;
+    color: white !important;
+    border-radius: 9999px;
+  }
+  
+  .slot-hover:hover {
+    background-color: #f6f1ff;
+    border-radius: 9999px;
+  }
+  
+  .slotmodal-divider {
+    width: 1px;
+    background-color: #e7e7e7;
+  }
+  
+  .slotmodal-times {
+    flex: 1;
+  }
+  
+  .slotmodal-times-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px 24px;
+  }
+  
+  .slotmodal-time-btn {
+    padding: 12px 16px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    border: 1px solid #e0d7f8;
+    background-color: #f6f1ff;
+    color: #6c1cd2;
+    border-radius: 12px;
+    transition: 0.3s;
+    cursor: pointer;
+  }
+  
+  .slotmodal-time-btn:hover {
+    background-color: #e8d9ff;
+  }
+  
+  .slotmodal-time-btn.active {
+    border: 2px solid #6c1cd2;
+    background-color: #f6f1ff;
+    color: #6c1cd2;
+    box-shadow: 0 0 0 2px rgba(108, 28, 210, 0.3);
+  }
+  
+  .slotmodal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 32px;
+  }
+  
+  .slotmodal-cancel {
+    padding: 8px 24px;
+    width: 108px;
+    height:56px;
+    background-color: #f3f4f6;
+    color: #374151;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  
+  .slotmodal-cancel:hover {
+    background-color: #e5e7eb;
+  }
+  
+  .slotmodal-save {
+    padding: 8px 24px;
+     width: 108px;
+    height:56px;
+    background-color: #7c3aed;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  
+  .slotmodal-save:hover {
+    background-color: #5b21b6;
+  }
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+  .slotmodal-backdrop {
+    padding: 16px;
+    align-items: flex-start;
+    padding-top: 20px;
+  }
+
+  .slotmodal-container {
+    width: 100%;
+    max-width: 100%;
+    padding: 24px 16px;
+    gap: 16px;
+    max-height: 90vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  .slotmodal-title {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+  }
+
+  .slotmodal-card {
+    flex-direction: column;
+    width: 100%;
+    max-width: 100%;
+    gap: 20px;
+    padding: 16px;
+    overflow: hidden;
+  }
+
+  .slotmodal-calendar {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+  }
+
+  .slotmodal-section-title {
+    font-size: 1rem;
+  }
+
+  /* Fix calendar sizing for mobile */
+  .slotmodal-calendar .react-datepicker {
+    width: 100% !important;
+    font-size: 14px;
+    overflow: hidden;
+  }
+
+  .slotmodal-calendar .react-datepicker__month-container {
+    width: 100% !important;
+    overflow: hidden;
+  }
+
+  .slotmodal-calendar .react-datepicker__month {
+    width: 100% !important;
+    overflow: hidden;
+  }
+
+  .slotmodal-calendar .react-datepicker__header {
+    padding: 8px 0;
+  }
+
+  .slotmodal-calendar .react-datepicker__day {
+    width: 32px;
+    height: 32px;
+    line-height: 32px;
+    margin: 2px;
+    font-size: 12px;
+  }
+
+  .slotmodal-calendar .react-datepicker__day-name {
+    width: 32px;
+    height: 32px;
+    line-height: 32px;
+    margin: 2px;
+    font-size: 11px;
+  }
+
+  .slotmodal-datepicker-header {
+    padding: 6px 16px 8px;
+  }
+
+  .slotmodal-chevron {
+    width: 28px;
+    height: 28px;
+  }
+
+  .slotmodal-month-label {
+    font-size: 1rem;
+  }
+
+  .slotmodal-times-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px 16px;
+  }
+
+  .slotmodal-time-btn {
+    padding: 10px 12px;
+    font-size: 0.8rem;
+  }
+
+  .slotmodal-footer {
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 20px;
+  }
+
+  .slotmodal-cancel,
+  .slotmodal-save {
+    width: 100%;
+    height: 48px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .slotmodal-backdrop {
+    padding: 8px;
+    padding-top: 16px;
+  }
+
+  .slotmodal-container {
+    padding: 20px 12px;
+    gap: 12px;
+    max-height: 85vh;
+  }
+
+  .slotmodal-title {
+    font-size: 1.125rem;
+  }
+
+  .slotmodal-card {
+    padding: 12px;
+    gap: 16px;
+  }
+
+  .slotmodal-datepicker-header {
+    padding: 4px 12px 6px;
+  }
+
+  .slotmodal-chevron {
+    width: 24px;
+    height: 24px;
+  }
+
+  .slotmodal-month-label {
+    font-size: 0.9rem;
+  }
+
+  .slotmodal-times-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .slotmodal-time-btn {
+    padding: 8px 10px;
+    font-size: 0.75rem;
+  }
+
+  .slotmodal-footer {
+    margin-top: 16px;
+  }
+
+  .slotmodal-cancel,
+  .slotmodal-save {
+    height: 44px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 360px) {
+  .slotmodal-container {
+    padding: 16px 8px;
+    max-height: 90vh;
+  }
+
+  .slotmodal-title {
+    font-size: 1rem;
+  }
+
+  .slotmodal-card {
+    padding: 8px;
+  }
+
+  /* Further optimize calendar for very small screens */
+  .slotmodal-calendar .react-datepicker {
+    font-size: 12px;
+  }
+
+  .slotmodal-calendar .react-datepicker__day {
+    width: 28px;
+    height: 28px;
+    line-height: 28px;
+    margin: 1px;
+    font-size: 11px;
+  }
+
+  .slotmodal-calendar .react-datepicker__day-name {
+    width: 28px;
+    height: 28px;
+    line-height: 28px;
+    margin: 1px;
+    font-size: 10px;
+  }
+
+  .slotmodal-calendar .react-datepicker__header {
+    padding: 6px 0;
+  }
+
+  .slotmodal-chevron {
+    width: 20px;
+    height: 20px;
+  }
+
+  .slotmodal-month-label {
+    font-size: 0.8rem;
+  }
+
+  .slotmodal-time-btn {
+    padding: 6px 8px;
+    font-size: 0.7rem;
+  }
+
+  .slotmodal-cancel,
+  .slotmodal-save {
+    height: 40px;
+    font-size: 12px;
+  }
+}
+  

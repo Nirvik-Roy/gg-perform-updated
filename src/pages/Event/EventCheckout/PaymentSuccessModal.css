@@ -1,0 +1,81 @@
+.ps7x-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(26, 26, 26, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.ps7x-modal {
+  background: #ffffff;
+  width: 400px;
+  padding: 40px 30px;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  animation: ps7x-fadeIn 0.3s ease;
+}
+
+@keyframes ps7x-fadeIn {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.ps7x-iconWrap {
+  margin-bottom: 20px;
+}
+
+.ps7x-checkCircle {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: #6300c3;
+  color: #ffffff;
+  font-size: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.ps7x-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 15px;
+}
+
+.ps7x-message {
+  font-size: 15px;
+  color: #555;
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+
+.ps7x-button {
+  width: 100%;
+  padding: 14px;
+  border-radius: 10px;
+  border: none;
+  background: #6300c3;
+  color: #ffffff;
+  font-size: 16px;
+  font: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.ps7x-button:hover {
+  background: #4f009d;
+}

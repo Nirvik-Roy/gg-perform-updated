@@ -1,0 +1,86 @@
+.faq_page_content_wrapper {
+  margin-inline: auto;
+}
+.faq_page_content_wrapper .faq-container:nth-child(1).faq-right {
+  padding-right: 50px !important;
+}
+.faq_page_content_wrapper .faq-container:nth-child(2) {
+  flex-direction: row-reverse;
+}
+.faq_page_content_wrapper .faq-container:nth-child(2) .faq-left {
+  padding-left: 50px !important;
+}
+
+.faq_page_content_wrapper .faq-container:nth-child(3).faq-right {
+  padding-right: 50px !important;
+}
+.faq_page_content_wrapper .faq-container:nth-child(4) {
+  flex-direction: row-reverse;
+}
+.faq_page_content_wrapper .faq-container:nth-child(4) .faq-left {
+  padding-left: 50px !important;
+}
+
+.faq_page_content_wrapper .faq-container:nth-child(5).faq-right {
+  padding-right: 50px !important;
+}
+.faq_page_content_wrapper .faq-container:nth-child(6) {
+  flex-direction: row-reverse;
+}
+.faq_page_content_wrapper .faq-container:nth-child(6) .faq-left {
+  padding-left: 50px !important;
+}
+
+.faq_page_content_wrapper .faq-container:nth-child(7).faq-right {
+  padding-right: 50px !important;
+}
+.faq_page_content_wrapper .faq-container:nth-child(8) {
+  flex-direction: row-reverse;
+}
+.faq_page_content_wrapper .faq-container:nth-child(8) .faq-left {
+  padding-left: 50px !important;
+}
+.faq_page_content_wrapper .faq_right {
+  flex: 1 !important;
+  overflow: hidden;
+  border-radius: 20px;
+  max-height: 400px;
+  height: 400px;
+}
+.faq_right img {
+  width: 100% !important;
+  min-width: 100% !important;
+  max-width: 100% !important;
+  object-fit: cover !important;
+  height: 100% !;
+}
+
+@media (max-width: 768px) {
+   .faq-container {
+    flex-direction: column !important;
+  }
+  .faq_page_content_wrapper .faq-container:nth-child(1).faq-right {
+    padding-right: 0px !important;
+  }
+  .faq_page_content_wrapper .faq-container:nth-child(3).faq-right {
+    padding-right: 0px !important;
+  }
+  .faq_page_content_wrapper .faq-container:nth-child(5).faq-right {
+    padding-right: 0px !important;
+  }
+  .faq_page_content_wrapper .faq-container:nth-child(7).faq-right {
+    padding-right: 0px !important;
+  }
+  .faq_page_content_wrapper .faq-container:nth-child(2) .faq-left {
+    padding-left: 0px !important;
+  }
+  .faq_page_content_wrapper .faq-container:nth-child(4) .faq-left {
+    padding-left: 0px !important;
+  }
+  .faq_page_content_wrapper .faq-container:nth-child(6) .faq-left {
+    padding-left: 0px !important;
+  }
+  .faq_page_content_wrapper .faq-container:nth-child(8) .faq-left {
+    padding-left: 0px !important;
+  }
+}

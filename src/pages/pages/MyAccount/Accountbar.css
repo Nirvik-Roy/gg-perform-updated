@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;600&display=swap');
+
+.accountbar-container {
+  display: flex;
+   /* full height of the viewport */
+  /* background-color: #FCF9FF; */
+
+}
+
+.accountbar-sidebar {
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+  padding: 32px;
+  gap: 12px;
+  background-color: #FCF9FF;
+  position: relative;
+  height: 364px;
+}
+
+.accountbar-button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  transition: background-color 0.2s, color 0.2s;
+  border: none;
+  cursor: pointer;
+  background: none;
+  text-align: left;
+}
+
+.accountbar-button-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.accountbar-icon {
+  font-size: 1.125rem;
+}
+
+.accountbar-badge {
+  background-color: #ef4444;
+  color: white;
+  font-size: 0.75rem;
+  padding: 2px 8px;
+  border-radius: 9999px;
+}
+
+.accountbar-button.active {
+  background-color: rgba(102, 0, 204, 0.04); /* light purple */
+  color: #6600CC;
+  font-weight: 500;
+  font-family: 'League Spartan', sans-serif;
+}
+
+.accountbar-button.inactive {
+  font-family: 'League Spartan', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0;
+  color: #0D0D0DA8;
+}
+
+.accountbar-button.inactive:hover {
+  background-color: #EFEFEF;
+}
+
+.accountbar-content {
+  flex: 1;
+  padding: 32px;
+  font-family: 'League Spartan', sans-serif;
+}

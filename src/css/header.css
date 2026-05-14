@@ -1,0 +1,687 @@
+/* .custom-header {
+  background-image: url("/other-banner.png");
+  background-size: cover;
+  background-position: center;
+  height: 457px;
+  width: 100%;
+  position: scroll;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  margin-bottom: 200px;
+}
+
+.header-overlay {
+
+  height: 15%;
+  display: flex;
+  align-items: center;
+}
+
+.header-container {
+  width: 100%;
+  max-width: 1340px;
+  margin: 0 auto;
+  padding: 10px 10px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+
+.header-logo img {
+  height: 45px;
+}
+
+.header-nav {
+  display: flex;
+  gap: 30px;
+  font-size: 16px;
+}
+
+.header-nav a {
+  color: white;
+  text-decoration: none;
+  position: relative;
+  padding-bottom: 5px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.header-nav a.active::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  background-color: white;
+}
+
+.header-nav a:hover {
+  opacity: 0.8;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-size: 18px;
+}
+
+.header-btn {
+  background-color: #6800a5;
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.header-btn:hover {
+  background-color: #530084;
+} */
+.custom-header {
+  /* background-image: url("/professional-athlete-preparing-race-demonstrating-years-training-expertise.jpg.jpeg"); */
+  background-image: url('/image (1).png');
+  background-size: cover;
+  background-position: center;
+  height: 457px;
+  width: 100%;
+  position: relative;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+/* NAVBAR AREA */
+.header-overlay {
+  position: relative;
+  z-index: 1;
+  padding: 20px 40px;
+  /* background-image: url("/other-banner.png"); */
+  color: white;
+}
+
+/* Add a blur + opacity background behind the text */
+.header-overlay::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #1A1A1A;
+  /* semi-transparent black */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  /* for Safari */
+  z-index: -1;
+}
+
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1440px;
+  margin: 0 auto;
+
+}
+
+.header-logo img {
+  height: 60px;
+  margin-left: 49.5px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.header-right-section {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.header-nav {
+  display: flex;
+  gap: 40px;
+}
+
+.header-nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  line-height: 24px;
+  font-family: 'Inter';
+  font-weight: 400;
+  padding-bottom: 5px;
+  position: relative;
+
+}
+
+.header-nav a.active::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  background-color: white;
+}
+
+.header-nav a:hover {
+  opacity: 0.85;
+}
+
+.header-icons {
+  display: flex;
+  gap: 20px;
+  font-size: 18px;
+}
+
+.header-btn {
+  background-color: #6600CC;
+  border: 1.5px solid #6600CC;
+  color: white;
+  padding: 8px 16px 8px 16px;
+  border-radius: 12px;
+  font-weight: 400;
+  font-style: 'League Spartan';
+  font-size: 16px;
+  letter-spacing: 1px;
+  line-height: 32px;
+  cursor: pointer;
+  /* transition: 0.3s; */
+  /* margin-right: 30px; */
+  display: flex;
+  align-items: flex-end;
+  justify-content: end;
+  text-decoration: none !important;
+}
+
+.header-btn:hover {
+  /* background-color: #6600CC; */
+  background-color: transparent;
+  border: 1.5px solid white;
+}
+
+/* Remove underline from Book an Appointment button NavLink */
+a[href="/booking"] {
+  text-decoration: none !important;
+}
+
+a[href="/booking"]:hover,
+a[href="/booking"]:visited,
+a[href="/booking"]:active,
+a[href="/booking"]:focus {
+  text-decoration: none !important;
+}
+
+/* HERO CENTER */
+.hero-center-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+}
+
+/* .hero-title {
+  font-size: 96px;
+  font-weight: 700;
+  line-height: 90px;
+  margin-bottom: 0px;
+} */
+
+.breadcrumb {
+  font-size: 18px;
+  margin-top: 20px;
+  /* gap: 1rem; */
+}
+
+.breadcrumb a {
+  margin-top: 20px;
+  color: grey;
+  text-decoration: underline;
+}
+
+/* HomeHero.css */
+
+.home-hero {
+  background-size: cover;
+  background-position: contain;
+  position: relative;
+
+  padding: 100px 50px;
+  color: #fff;
+  /* text-align: left; */
+  display: flex;
+  align-items: center;
+  min-height: 60vh;
+  /* backgroundSize: "cover",
+            backgroundPosition: "center",
+            padding: "30px 20px 140px 20px",
+            color: "#fff",
+            textAlign: "center", */
+  background-size: cover;
+  background-position: center;
+  padding: 30px 20px 140px 20px;
+  color: #fff;
+  text-align: center;
+
+}
+
+.hero-text-box {
+  max-width: 600px;
+  text-align: left;
+  margin-left: 5vw;
+}
+.hero-text-box h1{
+  font-size: 86px;
+  font-weight: 1000 !important;
+  line-height: 1.2;
+  color: #fff !important;
+  margin-bottom: 10px;
+  font-family: 'League Spartan', sans-serif;
+}
+/* .hero-title {
+  font-size: 86px;
+  font-weight: 900;
+  line-height: 1.2;
+  margin-bottom: 10px;
+    font-family: 'League Spartan', sans-serif;
+
+} */
+.hero-title {
+  font-size: 60px;
+  font-weight: 1200;
+  line-height: 64px;
+  margin-bottom: 10px;
+  /* color: linear-gradient(180deg, #6600CC 40%, white); */
+  /* color: linear-gradient(180deg, #6600CC 40%, white); */
+  font-family: 'League Spartan', sans-serif;
+  /* background: linear-gradient(160deg, white 35%, #6600CC 70%); */
+background-color: white;
+  color: #fff !important;
+  /* Adjust colors as needed */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+
+}
+
+.hero-title .highlight-purple {
+  background: linear-gradient(180deg, #6600CC 40%, white);
+  /* Adjust colors as needed */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-title .highlight-pink {
+  background: linear-gradient(180deg, #6600CC 40%, white);
+  /* Adjust colors as needed */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-title .highlight-blue {
+  background: linear-gradient(180deg, #6600CC 40%, white);
+  /* Adjust colors as needed */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-text-box p {
+  font-size: 20px;
+  /* margin: auto; */
+  color: white;
+  line-height: 1.5;
+  font-weight: 500;
+}
+.hero-text-box p span{
+  color: #fff !important;
+}
+.animated-button {
+  margin-top: 5px;
+  padding: 18px 40px;
+  font-size: 16px;
+  /* line-height: px; */
+  /* background-color: #fff; */
+  background-color: transparent;
+  color: white;
+  font-weight: 400;
+  border: 2px solid #fff;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.animated-button:hover {
+  background-color: #6600CC;
+  border: none;
+  color: #fff;
+}
+
+.cart-icon-wrapper {
+  position: relative;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.cart-badge {
+  position: absolute;
+  top: -6px;
+  right: -10px;
+  background-color: red;
+  color: white;
+  font-size: 11px;
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 50%;
+  line-height: 1;
+}
+
+.wishlist-icon-wrapper {
+  position: relative;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.nav-toggle {
+  display: none;
+}
+
+.hamberger-cart {
+  display: none;
+}
+
+.home-hero .home-header-new-overlay {
+  position: absolute;
+  top: 0%;
+  bottom: 0%;
+  left: 0%;
+  right: 0%;
+  display: none;
+
+}
+
+/* @media (max-width: 600px) {
+  .header-container {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .nav-toggle {
+    display: block;
+    color: white;
+    font-size: 26px;
+    cursor: pointer;
+    margin-left: auto;
+  }
+
+  .header-nav {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background-color: #1A1A1A;
+    position: absolute;
+    top: 70px; 
+    left: 0;
+    padding: 20px 20px;
+    z-index: 999;
+    height: 1000%;
+  }
+
+  .header-nav.open {
+    display: flex;
+  }
+
+  .header-nav a {
+    padding: 0px 0;
+    border-bottom: 1px solid #333;
+    font-size: 16px;
+  }
+
+  .header-right-section {
+    flex-direction: row;
+    align-items: center;
+    gap: 15px;
+  }
+.header-logo img{
+  display: flex;
+  justify-content: left;
+  align-items: flex-start;
+}
+  .header-btn {
+    display: none; 
+  }
+.header-icons{
+  display: none;
+}
+  .hero-title {
+    font-size: 36px;
+    line-height: 1.3;
+  }
+
+  .breadcrumb {
+    font-size: 14px;
+  }
+  .cart-icon-wrapper{
+    display: none;
+  }
+  .hamberger-cart{
+    display: flex;
+  }
+  .home-hero {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 50px 20px 100px 20px;
+    text-align: center;
+    min-height: 60vh;
+  }
+
+  .hero-text-box {
+    margin-left: 0;
+    margin-top: -90px;
+    max-width: 100%;
+    text-align: left;
+  }
+
+  .hero-title {
+    font-size: 48px;
+    line-height: 1.3;
+    font-weight: 900;
+    margin-bottom: 20px;
+  }
+
+  .hero-text-box p {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .animated-button {
+    padding: 16px 30px;
+    font-size: 14px;
+  }
+}
+@media (max-width: 400px) {
+  .hero-title {
+    font-size: 36px;
+  }
+
+  .hero-text-box p {
+    font-size: 14px;
+  }
+
+  .animated-button {
+    padding: 12px 30px;
+    font-size: 13px;
+  }
+
+  .breadcrumb {
+    font-size: 12px;
+  }
+
+  .header-nav a {
+    font-size: 14px;
+  }
+} */
+@media (max-width: 600px) {
+  .header-container {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .nav-toggle {
+    display: block;
+    color: white;
+    font-size: 1.6rem;
+    /* ~26px */
+    cursor: pointer;
+    margin-left: auto;
+    z-index: 101;
+  }
+
+  .header-nav {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background-color: #1A1A1A;
+    position: fixed;
+    top: 10vh;
+    /* 70px → relative to screen height */
+    left: 0;
+    padding: 4vw;
+    margin-top: -2vh;
+    height: 100vh;
+    z-index: 99999;
+  }
+
+  .header-nav.open {
+    display: flex;
+
+  }
+
+  .header-nav a {
+    padding: 1vh 0;
+    border-bottom: 1px solid #333;
+    font-size: 1rem;
+    /* ~16px */
+  }
+
+  .header-right-section {
+    flex-direction: row;
+    align-items: center;
+    gap: 3vw;
+  }
+
+  .home-hero {
+    position: relative;
+    z-index: 0 !important;
+    /* 🟡 Force background content behind nav */
+  }
+
+  .header-logo img {
+    display: flex;
+    justify-content: left;
+    align-items: flex-start;
+  }
+
+  .home-hero .home-header-new-overlay {
+    display: block;
+    background-color: #1a1a1aa7;
+    z-index: 1;
+    /* opacity: 30%; */
+  }
+
+  .header-btn {
+    display: none;
+  }
+
+  .header-icons {
+    display: none;
+  }
+
+
+
+  .breadcrumb {
+    font-size: 0.875rem;
+    /* 14px */
+  }
+
+  .cart-icon-wrapper {
+    display: none;
+  }
+
+  .hamberger-cart {
+    display: flex;
+  }
+
+  .home-hero {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0% 5% 2% 2%;
+    text-align: center;
+    min-height: 60vh;
+  }
+
+  .hero-text-box {
+    margin-left: 5%;
+    margin-top: 0;
+    max-width: 100%;
+    text-align: left;
+    z-index: 20;
+  }
+
+  .hero-title {
+    font-size: 10vw;
+    line-height: 1.3;
+    font-weight: 900;
+    margin-bottom: 2vh;
+  }
+
+  .hero-text-box p {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  .animated-button {
+    padding: 1.5vh 7vw;
+    font-size: 0.875rem;
+    /* 14px */
+  }
+}
+
+/* 
+@media (max-width: 400px) {
+  .hero-title {
+    font-size: 9vw;
+  }
+
+  .hero-text-box p {
+    font-size: 0.875rem;
+  }
+
+  .animated-button {
+    padding: 2.8vh 7vw;
+    font-size: 0.8rem;
+  }
+
+  .breadcrumb {
+    font-size: 0.75rem; 
+  }
+
+  .header-nav a {
+    font-size: 0.875rem;
+  }
+} */

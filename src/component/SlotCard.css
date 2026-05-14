@@ -1,0 +1,197 @@
+.slot-card {
+    width: 150px;
+    height: 150px;
+    border-radius: 8px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    transition: all 0.3s ease;
+    transform: rotate(0deg);
+    opacity: 1;
+    gap: 10px;
+  }
+  
+  .slot-card.not-selected {
+    background: #fff;
+    border: 1px solid #6600CC;
+  }
+  
+  .slot-card.selected {
+    background: #6600CC0A;
+    border: none;
+  }
+  
+  .slot-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .slot-icon-wrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2px;
+    width: 68px;
+    height: 68px;
+  }
+  
+  .slot-clock-icon {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+    border: 2px solid #eee;
+    width: 22px;
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .slot-session {
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-top: 4px;
+  }
+  
+  .slot-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    margin-top: 8px;
+    width: 100%;
+  }
+  
+  .slot-date-text,
+  .slot-time-text {
+    font-size: 14px;
+    font-weight: 500;
+    color: #343434;
+  }
+  
+  .slot-button-container {
+    width: 100%;
+  }
+  
+  .slot-button {
+    color: #7C3AED;
+    font-weight: 600;
+    font-size: 14px;
+    width: 100%;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .slot-button:hover {
+    text-decoration: underline;
+  }
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+  .slot-card {
+    width: 120px;
+    height: 120px;
+    padding: 12px;
+    gap: 8px;
+  }
+
+  .slot-icon-wrapper {
+    width: 50px;
+    height: 50px;
+  }
+
+  .slot-clock-icon {
+    width: 18px;
+    height: 18px;
+  }
+
+  .slot-session {
+    font-size: 0.75rem;
+  }
+
+  .slot-date-text,
+  .slot-time-text {
+    font-size: 12px;
+  }
+
+  .slot-button {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .slot-card {
+    width: 100px;
+    height: 100px;
+    padding: 8px;
+    gap: 6px;
+  }
+
+  .slot-icon-wrapper {
+    width: 40px;
+    height: 40px;
+  }
+
+  .slot-clock-icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  .slot-session {
+    font-size: 0.7rem;
+  }
+
+  .slot-date-text,
+  .slot-time-text {
+    font-size: 11px;
+  }
+
+  .slot-button {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 360px) {
+  .slot-card {
+    width: 90px;
+    height: 90px;
+    padding: 6px;
+    gap: 4px;
+  }
+
+  .slot-icon-wrapper {
+    width: 35px;
+    height: 35px;
+  }
+
+  .slot-clock-icon {
+    width: 14px;
+    height: 14px;
+  }
+
+  .slot-session {
+    font-size: 0.65rem;
+  }
+
+  .slot-date-text,
+  .slot-time-text {
+    font-size: 10px;
+  }
+
+  .slot-button {
+    font-size: 10px;
+  }
+}
+  

@@ -1,0 +1,926 @@
+/* .about-container {
+  margin: 20% 0%;
+  margin-top: 20.596%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 0px 50px;
+  gap: 20px;
+  flex-wrap: wrap;
+} */
+
+.about-container {
+  /* margin: 20% 0%; */
+  margin-top: 42%;
+  display: flex;
+  margin-bottom: 10vh;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 0px 50px;
+  padding-bottom: 80px;
+  /* Extra space for experience badge */
+  gap: 20px;
+  flex-wrap: wrap;
+  min-height: 650px;
+  
+  /* Ensure consistent container height */
+  overflow: visible;
+  /* Ensure badge is visible */
+  /* margin-left: 5%; */
+}
+
+.image-section {
+  position: relative;
+  flex: 1;
+  /* max-width: 582px; */
+  max-width: 582px;
+  min-height: 616px;
+  /* Maintain consistent height */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+
+.trainer-image {
+  /* width: 100%;
+  height: auto; */
+  width: 100%;
+  max-width: 552px;
+  height: 616px;
+  border-radius: 16px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.experience-badge {
+  position: absolute;
+  /* bottom: 0px; */
+  /* top: 85%;
+  left: 65%; */
+  bottom: -30px;
+  right: -30px;
+  background-color: #0A0015;
+  color: white;
+  padding: 30px 50px;
+  border-radius: 8px;
+  text-align: center;
+  z-index: 2;
+}
+
+.experience-badge h2 {
+  margin: 0;
+  font-size: 60px;
+}
+
+.experience-badge p {
+  margin: 0;
+  font-size: 18px;
+  white-space: nowrap;
+  /* text-decoration: none; */
+}
+
+.content-section {
+  flex: 2;
+  max-width: 680px;
+  margin-top: 45px;
+  padding-left: 40px;
+  
+}
+
+.content-section h2 {
+  background: linear-gradient(90deg, #0D0D0D 10%, #6600CC 35%);
+  /* Adjust colors as needed */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 60px;
+  line-height: 60px;
+  font-weight: 700;
+  font-style: 'League Spartan';
+}
+
+.content-section span {
+  background: linear-gradient(90deg, #0D0D0D 10%, #6600CC 65%);
+  /* Adjust colors as needed */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 80px;
+  line-height: 90px;
+  font-weight: 700;
+  margin-top: 20px;
+  font-style: 'League Spartan';
+}
+
+.about-title {
+  font-size: 34px;
+  margin-bottom: 30px;
+}
+
+.content-section p {
+  font-size: 18px;
+  line-height: 1.5;
+  margin-bottom: 16px;
+  color: #343434;
+}
+
+.content-section .about-text {
+  font-size: 18px;
+  line-height: 1.5;
+  margin-bottom: 16px;
+  color: #343434;
+}
+
+
+.mvv-section {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 20px 10px;
+  position: relative;
+  margin-top: -12vh;
+  background-image: url('/misson-bg.png');
+}
+
+.mvv-overlay {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  background-color: transparent;
+  /* semi-transparent overlay */
+  padding: 20px;
+  border-radius: 12px;
+  backdrop-filter: blur(4px);
+  flex-wrap: wrap;
+}
+
+.mvv-box {
+  flex: 1;
+  min-width: 280px;
+  border-right: 1px solid #ccc;
+  padding: 0 20px;
+}
+
+.mvv-box:last-child {
+  border-right: none;
+}
+
+.mvv-number {
+  font-size: 100px;
+  color: #0E0E0E26;
+  font-weight: bold;
+  margin-right: 10px;
+  font-weight: 700;
+  line-height: 180px;
+
+}
+
+.mvv-heading {
+  font-size: 40px;
+  font-weight: 700;
+  color: #0D0D0D;
+  line-height: 50px;
+}
+
+.mvv-box p,
+.mvv-box ul,
+.mvv-box div {
+  font-size: 16px;
+  color: #343434;
+  line-height: 25px;
+  margin-top: 15px;
+  font-weight: 200;
+  font-family: 'Albert Sans', sans-serif;
+  text-align: left;
+  transition: color 0.3s ease;
+}
+
+/* Paragraph specific styling */
+.mvv-box p {
+  margin-bottom: 12px;
+  text-indent: 0;
+}
+
+
+.mvv-box ul {
+  padding-left: 25px;
+  margin-top: 20px;
+  list-style-type: none;
+}
+
+.mvv-box ul li {
+  margin-bottom: 12px;
+  position: relative;
+  padding-left: 20px;
+  font-size: 16px;
+  /* font-family: 'Albert Sans', sans-serif; */
+
+  line-height: 20px;
+  color: rgb(0, 0, 0);
+  font-family: "League Spartan", sans-serif;
+  font-size: medium;
+}
+
+/* Custom bullet points */
+.mvv-box ul li:before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: blacks;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+/* Strong/bold text within content */
+.mvv-box strong,
+.mvv-box b {
+  color: #0D0D0D;
+  font-weight: 600;
+}
+
+/* Emphasis/italic text */
+.mvv-box em,
+.mvv-box i {
+  color: #6600CC;
+  font-style: italic;
+}
+
+/* Links within content */
+.mvv-box a {
+  color: #6600CC;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.mvv-box a:hover {
+  border-bottom-color: #6600CC;
+  color: #4A0080;
+}
+
+/* Responsive text sizing */
+@media (max-width: 768px) {
+
+  .mvv-box p,
+  .mvv-box ul,
+  .mvv-box div {
+    font-size: 14px;
+    line-height: 1.6;
+    text-align: left;
+  }
+
+  .mvv-box ul li {
+    font-size: 13px;
+    margin-bottom: 10px;
+  }
+}
+
+.why-container {
+  padding: 0px 80px;
+  text-align: center;
+
+}
+
+.why-heading {
+  background: linear-gradient(90deg, #0D0D0D 30%, #6600CC 70%);
+  /* Adjust colors as needed */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 60px;
+  line-height: 64px;
+  font-weight: 700;
+  margin-top: 10vh;
+  margin-bottom: 8vh;
+  font-style: 'League Spartan';
+}
+
+
+
+.why-content {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.why-column {
+  flex: 1;
+  min-width: 280px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  margin-top: 25px;
+  /* margin: 25px; */
+}
+
+.why-box {
+  text-align: left;
+}
+
+.why-box h4 {
+  font-weight: 500;
+  margin-bottom: 5px;
+  font-size: 22px;
+  color: #0D0D0D;
+}
+
+.why-box p {
+  font-size: 14px;
+  color: #343434;
+  line-height: 1.6;
+  font-family: 'Albert Sans';
+}
+
+.why-image {
+  padding-left: 25px;
+  padding-right: 25px;
+
+}
+
+.why-image img {
+  width: 100%;
+  max-height: 500px;
+  /* Increased height */
+  object-fit: contain;
+  transition: all 0.3s ease;
+}
+
+
+.faq-container {
+  display: flex;
+  justify-content: space-between;
+  /* align-items: flex-start; */
+  align-items: stretch;
+  padding: 50px 49px;
+  flex-wrap: wrap;
+  margin-top: 5vh;
+  flex-wrap: wrap;
+}
+
+.faq-left {
+  flex: 1.2;
+  min-width: 300px;
+  padding-right: 40px;
+  padding-top: 0px;
+}
+
+.faq-heading {
+  background: linear-gradient(125deg, #0D0D0D 10%, #6600CC 18%);
+  /* Adjust colors as needed */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 60px;
+  line-height: 64px;
+  font-weight: 700;
+  font-style: 'League Spartan';
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 25px;
+
+}
+
+
+
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border-bottom: 1px solid #EAEAEA;
+
+}
+
+.faq-item {
+  /* background: white; */
+  /* border-radius: 8px; */
+  /* box-shadow: 0 2px 6px rgba(0,0,0,0.05); */
+  padding: 35px 0px;
+  padding-top: 0px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  /* border: 1px solid #eee; */
+  border-bottom: 1px solid #EAEAEA;
+  /* border-top: 1px solid #ddd; */
+
+
+}
+
+.faq-item:hover {
+  /* background-color: #faf7ff; */
+}
+
+.faq-item.open {
+  /* border-left: 4px solid #6a0dad; */
+}
+
+.faq-question {
+  display: flex;
+  justify-content: space-between;
+  font-size: 20px;
+  color: #0D0D0D;
+}
+
+.faq-answer {
+  font-size: 12px;
+  color: #343434;
+  line-height: 1.6;
+  margin-top: 12px;
+  font-style: "Albert Sans";
+}
+
+.faq-right {
+  flex: 1;
+  min-width: 300px;
+  display: flex;
+  margin-left: 25px;
+  justify-content: center;
+  align-items: center;
+  min-height: 677px;
+  height: 677px;
+}
+
+.faq-right img {
+  width: 100%;
+  max-width: 626px;
+  height: 100%;
+  border-radius: 16px;
+  object-fit: cover;
+}
+
+@media (max-width: 400px) {
+  .homePage-main-container {
+    margin-top: 25% !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .homePage-main-container {
+    margin-top: 50%;
+  }
+
+  .faq-container {
+    flex-direction: column;
+    padding: 20px 0px;
+  }
+
+  .faq-left {
+    padding-right: 0;
+    padding-top: 0;
+  }
+
+  .faq-heading {
+    font-size: 36px;
+    line-height: 44px;
+    text-align: left;
+    padding-bottom: 20px;
+  }
+
+  .faq-question {
+    font-size: 18px;
+  }
+
+  .faq-answer {
+    font-size: 14px;
+  }
+
+  .faq-right {
+    margin-left: 0;
+    margin-top: 30px;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .faq-right img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+  }
+}
+
+
+
+.contact-container {
+  padding: 80px 0 0 0px;
+  max-width: 1320px;
+  margin: auto;
+  font-family: 'Arial', sans-serif;
+}
+
+.contact-heading {
+  background: linear-gradient(90deg, #0D0D0D 30%, #6600CC 70%);
+  /* Adjust colors as needed */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 60px;
+  line-height: 64px;
+  font-weight: 700;
+  font-style: 'League Spartan';
+  border-bottom: 1.5px solid #EAEAEA;
+  padding-bottom: 25px;
+
+}
+
+
+
+.contact-form {
+  background: #fff;
+  border-radius: 10px;
+  padding: 0;
+}
+
+.form-subheading {
+  font-size: 16px;
+  margin-bottom: 35px;
+  font-weight: 600;
+}
+
+.input-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.form-group {
+  flex: 1 1 45%;
+  display: flex;
+
+  flex-direction: column;
+}
+
+.form-group label {
+
+  font-size: 14px;
+  font-weight: 400;
+  margin-bottom: 6px;
+}
+
+.form-group label span {
+  color: red;
+}
+
+/* Custom contact form label styles */
+.contact-form-label {
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  color: #343434 !important;
+  margin-bottom: 8px !important;
+  display: block;
+}
+
+.required-star {
+  color: #dc3545 !important;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.form-group input,
+.form-group textarea {
+  padding: 18px 16px;
+  border: none;
+  background-color: #F8F8F8;
+  border-radius: 6px;
+  font-size: 14px;
+  resize: none;
+  border: 1px solid #ccc;
+}
+.contact_para_heading {
+  width: 1000px;
+  font-weight: 600;
+}
+.full-width {
+  flex: 1 1 100%;
+  margin-top: 20px;
+}
+
+.submit-button {
+  margin-top: 30px;
+  padding: 18px 40px;
+  background-color: #6600CC;
+  color: #FFFFFF;
+  font-weight: 700;
+  font-size: 20px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.submit-button:hover {
+  background-color: #5700b2;
+}
+
+.submit-button:disabled {
+  background-color: #6600CC !important;
+  color: #FFFFFF !important;
+  cursor: not-allowed;
+  opacity: 0.8;
+}
+
+.submit-button:disabled:hover {
+  background-color: #6600CC !important;
+}
+
+@media(max-width:1000px){
+  .contact_para_heading{
+    width: auto;
+    font-size: 16px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .contact-container {
+    margin-top: 5vh;
+    padding: 0 0px;
+    margin-bottom: 5vh;
+  }
+
+  .contact-heading {
+    font-size: 36px;
+    line-height: 44px;
+    text-align: left;
+    padding-bottom: 20px;
+  }
+
+  .form-subheading {
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+
+  .input-grid {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .form-group {
+    flex: 1 1 100%;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    font-size: 14px;
+    padding: 14px 12px;
+  }
+
+  .submit-button {
+    width: 20%;
+    font-size: 16px;
+    padding: 14px 0;
+    margin-top: 24px;
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .input-grid {
+    flex-direction: column;
+  }
+
+  .form-group {
+    flex: 1 1 100%;
+  }
+}
+
+@media (max-width: 768px) {}
+
+@media (max-width: 768px) {
+  .about-container {
+    flex-direction: column;
+    padding: 10px 0px;
+    gap: 40px;
+  }
+
+  .image-section {
+    max-width: 100%;
+    position: relative;
+    min-height: auto;
+  }
+
+  .trainer-image {
+    width: 100%;
+    height: auto;
+    margin-top: 0%;
+    border-radius: 12px;
+    max-height: 500px;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  /* .experience-badge {
+    position: absolute;
+    top: 375px;
+    left: 300px;
+    transform: translateX(-50%);
+    padding: 16px 24px;
+    border-radius: 8px;
+    background-color: #0A0015;
+    color: white;
+    width: auto;
+    text-align: center;
+  } */
+  .experience-badge {
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 4vw 6vw;
+    border-radius: 1rem;
+    background-color: #0A0015;
+    color: white;
+    width: auto;
+    text-align: center;
+    z-index: 2;
+  }
+
+
+  .experience-badge h2 {
+    font-size: 36px;
+  }
+
+  .experience-badge p {
+    font-size: 16px;
+  }
+
+  .content-section {
+    max-width: 100%;
+    margin-top: 20px;
+  }
+
+  .content-section h2,
+  .content-section span {
+    font-size: 36px;
+    line-height: 44px;
+    text-align: center;
+  }
+
+  .about-text {
+    font-size: 16px;
+    line-height: 1.6;
+    text-align: justify;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-container {
+    /* padding: -10% 0; */
+    /* gap: 10vh; */
+    margin-top: 10vh;
+    margin-bottom: 10vh;
+  }
+
+  .image-section {
+    max-width: 100%;
+    position: relative;
+  }
+
+  .trainer-image {
+    width: 100%;
+    height: 100%;
+    /* margin-top: -5vh; */
+    border-radius: 1rem;
+    object-fit: cover;
+  }
+
+  .experience-badge {
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 4vw 6vw;
+    border-radius: 1rem;
+    background-color: #0A0015;
+    color: white;
+    width: auto;
+    text-align: center;
+    z-index: 2;
+  }
+
+  .experience-badge h2 {
+    font-size: 2rem;
+    /* ~32px */
+  }
+
+  .experience-badge p {
+    font-size: 1rem;
+    /* ~16px */
+  }
+
+  .content-section {
+    max-width: 100%;
+    margin-top: 5vh;
+  }
+
+  .content-section h2,
+  .content-section span {
+    font-size: 2.25rem;
+    /* ~36px */
+    line-height: 1.3;
+    text-align: center;
+  }
+
+  .about-text {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    text-align: justify;
+    padding: 0 0vw;
+  }
+}
+
+@media (max-width: 768px) {
+  .mvv-section {
+    margin-top: -50px;
+    padding: 1%;
+  }
+
+  .mvv-overlay {
+    flex-direction: column;
+    gap: 30px;
+    padding: 2%;
+  }
+
+  .mvv-box {
+    border-right: none;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 20px;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .mvv-box:last-child {
+    border-bottom: none;
+  }
+
+  .mvv-number {
+    font-size: 130px;
+    line-height: 90px;
+  }
+
+  .mvv-heading {
+    font-size: 28px;
+    line-height: 36px;
+  }
+
+  .mvv-box p,
+  .mvv-box ul {
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  .mvv-box ul {
+    padding-left: 16px;
+  }
+
+  .mvv-box ul li {
+    margin-bottom: 6px;
+  }
+}
+
+@media (max-width: 768px) {
+  .why-container {
+    padding: 0 0px;
+  }
+
+  .why-heading {
+    font-size: 36px;
+    line-height: 44px;
+    margin-top: 40px;
+    margin-bottom: 0px;
+  }
+
+  .why-content {
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 30px;
+  }
+
+  .why-column {
+    width: 100%;
+    align-items: left;
+    text-align: left;
+  }
+
+  .why-box {
+    text-align: left;
+    padding: 0 0px;
+  }
+
+  .why-box h4 {
+    font-size: 20px;
+  }
+
+  .why-box p {
+    font-size: 14px;
+  }
+
+  .why-image {
+    padding: 0;
+    max-width: 120%;
+    text-align: center;
+  }
+
+  .why-image img {
+    width: 100%;
+    max-height: 420px;
+    object-fit: contain;
+    margin: 0 auto;
+  }
+}

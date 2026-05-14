@@ -1,0 +1,310 @@
+.my-account-common-layout-container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  column-gap: 4%;
+  position: relative;
+}
+
+.my-account-common-layout-sidebar {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+  background-color: #FCF9FF;
+  border-radius: 10px;
+  width: 200px;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 2%;
+}
+
+.my-account-common-layout-content {
+  flex: 4;
+}
+
+.my-account-common-layout-sidebar button {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 400;
+  color: #0D0D0DB2;
+  padding: 3% 4%;
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.my-account-common-layout-sidebar button.active{
+  background-color: #6600CC0A;
+  color: #6600CC;
+  font-weight: 500;
+}
+
+.my-account-common-layout-sidebar button:hover{
+  background-color: #6600CC0A;
+  color: #6600CC;
+  font-weight: 500;
+}
+
+.my-account-common-layout-sidebar button img{
+  width: 24px;
+  height: 24px;
+}
+
+/* Mobile Menu Button */
+.mobile-menu-button {
+  display: none;
+  position: absolute;
+  top: 5%;
+  left: 2%px;
+  z-index: 500;
+  border: none;
+  border-radius: 8px;
+  padding: 12px;
+  cursor: pointer;
+}
+
+.mobile-menu-button:hover {
+  background: #581c87;
+  transform: translateY(-1px);
+}
+
+.mobile-menu-button img {
+  width: 24px;
+  height: 24px;
+}
+
+/* Mobile Menu Overlay */
+.mobile-menu-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 998;
+  backdrop-filter: blur(2px);
+}
+
+/* Sidebar Header */
+.sidebar-header {
+  display: none;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 0 20px 0;
+  border-bottom: 1px solid #e5e7eb;
+  margin-bottom: 20px;
+}
+
+.sidebar-header h3 {
+  margin: 0;
+  color: #6600CC;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.close-mobile-menu {
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: #6600CC;
+  cursor: pointer;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
+}
+
+.close-mobile-menu:hover {
+  background-color: rgba(102, 0, 204, 0.1);
+}
+
+/* Mobile Responsive */
+@media (max-width: 468px) {
+  .my-account-common-layout-container {
+    flex-direction: column;
+    column-gap: 0;
+    padding: 0%;
+  }
+
+  .mobile-menu-button {
+    display: block;
+    margin-bottom: 5%;
+  }
+
+  .mobile-menu-overlay {
+    display: block;
+  }
+
+  .my-account-common-layout-sidebar {
+    position: fixed;
+    top: 0;
+    left: -280px;
+    width: 280px;
+    height: 100vh;
+    z-index: 99999;
+    border-radius: 0;
+    padding: 20px;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+  }
+
+  .my-account-common-layout-sidebar.mobile-open {
+    transform: translateX(280px);
+  }
+
+  .sidebar-header {
+    display: flex;
+  }
+
+  .my-account-common-layout-sidebar button {
+    padding: 15px 12px;
+    font-size: 16px;
+    border-radius: 8px;
+    margin-bottom: 5px;
+  }
+
+  .my-account-common-layout-sidebar button img {
+    width: 20px;
+    height: 20px;
+  }
+
+  .my-account-common-layout-content {
+    flex: none;
+    margin-top: 40%;
+  }
+}
+
+/* Logout Confirmation Modal Styles */
+.logout-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999999;
+  backdrop-filter: blur(2px);
+}
+
+.logout-modal {
+  background: white;
+  border-radius: 12px;
+  padding: 0;
+  max-width: 400px;
+  width: 90%;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  animation: modalSlideIn 0.3s ease-out;
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.logout-modal-header {
+  padding: 24px 24px 0 24px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.logout-modal-header h3 {
+  margin: 0;
+  color: #1f2937;
+  font-size: 20px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.logout-modal-content {
+  padding: 20px 24px;
+}
+
+.logout-modal-content p {
+  margin: 0;
+  color: #6b7280;
+  font-size: 16px;
+  text-align: center;
+  line-height: 1.5;
+}
+
+.logout-modal-actions {
+  padding: 0 24px 24px 24px;
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.logout-cancel-btn {
+  padding: 10px 20px;
+  border: 1px solid #d1d5db;
+  background-color: white;
+  color: #374151;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 100px;
+}
+
+.logout-cancel-btn:hover {
+  background-color: #f9fafb;
+  border-color: #9ca3af;
+}
+
+.logout-confirm-btn {
+  padding: 10px 20px;
+  border: none;
+  background-color: #6600CC;
+  color: white;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 120px;
+}
+
+.logout-confirm-btn:hover {
+  background-color: #6600CC;
+  transform: translateY(-1px);
+}
+
+/* Mobile Responsive for Modal */
+@media (max-width: 468px) {
+  .logout-modal {
+    width: 85%;
+    margin: 20px;
+  }
+  
+  .logout-modal-actions {
+    flex-direction: column;
+  }
+  
+  .logout-cancel-btn,
+  .logout-confirm-btn {
+    width: 100%;
+    min-width: unset;
+  }
+}

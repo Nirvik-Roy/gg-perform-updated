@@ -1,0 +1,16 @@
+/* @import "tailwindcss"; */
+body,html{
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow-x: hidden;
+  font-family: 'League Spartan', sans-serif;
+}
+
+.form_gird{
+  display: grid;
+  grid-template-columns: repeat(auto-fill,minmax(250px,1fr));
+  row-gap: 20px;
+  column-gap: 40px;
+  width: 97%;
+}

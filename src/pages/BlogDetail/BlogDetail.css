@@ -1,0 +1,262 @@
+.article-wrapper {
+  max-width: 1300px;
+  margin: auto;
+  padding: 2rem;
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  color: #222;
+}
+
+/* Blog Header */
+.blog-header {
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #eee;
+}
+
+.blog-meta {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.blog-meta span {
+  background-color: #f5f5f5;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.blog-category {
+  background-color: #6600CC !important;
+  color: white !important;
+}
+
+.blog-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.blog-description {
+  font-size: 1.2rem;
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+/* Social Share Buttons */
+.social-share {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #eee;
+}
+
+.social-share span {
+  font-weight: 600;
+  color: #333;
+}
+
+.share-button {
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+}
+
+.share-button.facebook {
+  background-color: #1877f2;
+  color: white;
+}
+
+.share-button.facebook:hover {
+  background-color: #166fe5;
+}
+
+.share-button.twitter {
+  background-color: #1da1f2;
+  color: white;
+}
+
+.share-button.twitter:hover {
+  background-color: #1a91da;
+}
+
+.share-button.linkedin {
+  background-color: #0077b5;
+  color: white;
+}
+
+.share-button.linkedin:hover {
+  background-color: #006097;
+}
+
+/* Blog Content */
+.blog-content {
+  margin-bottom: 3rem;
+}
+
+.blog-section {
+  margin-bottom: 2rem;
+}
+
+.blog-section h2 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.blog-section h3 {
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: #444;
+}
+
+/* Section Buttons */
+.section-button {
+  display: inline-block;
+  background-color: #6600CC;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  margin-top: 1rem;
+  transition: background-color 0.3s;
+}
+
+.section-button:hover {
+  background-color: #5500AA;
+  color: white;
+  text-decoration: none;
+}
+
+/* Back to Blogs Button */
+.back-to-blogs {
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.back-button {
+  background-color: #6600CC;
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.back-button:hover {
+  background-color: #5500AA;
+}
+
+/* Loading and Error States */
+.loading-container,
+.error-container {
+  text-align: center;
+  padding: 3rem;
+  color: #666;
+}
+
+.error-container h2 {
+  color: #d32f2f;
+  margin-bottom: 1rem;
+}
+
+.error-container p {
+  margin-bottom: 1.5rem;
+}
+
+/* Existing styles */
+.article-wrapper h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.article-wrapper p {
+  margin: 1rem 0;
+}
+
+.image-text-row {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin: 2rem 0;
+  flex-wrap: wrap;
+}
+
+.image-text-row.image-right {
+  flex-direction: row-reverse;
+}
+
+.image-text-row img {
+  width: 568px;
+  height: auto;
+  border-radius: 16px;
+  object-fit: cover;
+}
+
+.text-content {
+  flex: 1;
+  min-width: 280px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .article-wrapper {
+    padding: 1rem;
+  }
+  
+  .blog-title {
+    font-size: 2rem;
+  }
+  
+  .blog-meta {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .blog-meta span {
+    text-align: center;
+  }
+  
+  .social-share {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  
+  .image-text-row {
+    flex-direction: column;
+  }
+
+  .image-text-row.image-right {
+    flex-direction: column;
+  }
+
+  .image-text-row img {
+    width: 100%;
+  }
+  
+  .share-button {
+    width: 35px;
+    height: 35px;
+    font-size: 0.9rem;
+  }
+}

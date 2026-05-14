@@ -1,0 +1,103 @@
+.pf8x-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(26, 26, 26, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.pf8x-modal {
+  background: #ffffff;
+  width: 400px;
+  padding: 40px 30px;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  animation: pf8x-fadeIn 0.3s ease;
+}
+
+@keyframes pf8x-fadeIn {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.pf8x-iconWrap {
+  margin-bottom: 20px;
+}
+
+.pf8x-crossCircle {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: #e53935;
+  color: #ffffff;
+  font-size: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.pf8x-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 15px;
+}
+
+.pf8x-message {
+  font-size: 15px;
+  color: #555;
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+
+.pf8x-btnGroup {
+  display: flex;
+  gap: 12px;
+}
+
+.pf8x-retryBtn {
+  flex: 1;
+  padding: 14px;
+  border-radius: 10px;
+  border: none;
+  background: #6300c3;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.pf8x-retryBtn:hover {
+  background: #4f009d;
+}
+
+.pf8x-cancelBtn {
+  flex: 1;
+  padding: 14px;
+  border-radius: 10px;
+  border: 2px solid #6300c3;
+  background: #ffffff;
+  color: #6300c3;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.pf8x-cancelBtn:hover {
+  background: #f3eaff;
+}

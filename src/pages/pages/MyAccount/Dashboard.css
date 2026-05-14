@@ -1,0 +1,41 @@
+.dashboard-loading {
+    text-align: center;
+   
+  }
+  
+  .dashboard-wrapper {
+    max-width: 768px; /* 3xl = 768px */
+   /* mx-10 */
+    
+   
+    padding-bottom: 1rem;
+    
+   
+    font-size: 0.875rem; /* text-sm */
+    color: #374151; /* text-gray-700 */
+  }
+  
+  .dashboard-heading {
+   font-family: 'League Spartan', sans-serif;
+    font-weight: 600; /* SemiBold is typically 600 */
+    font-style: normal; /* CSS does not support 'SemiBold' as a font-style */
+    font-size: 1.5rem; /* Example: 2xl ≈ 24px = 1.5rem */
+    line-height: 2rem; /* Example: 3xl ≈ 32px = 2rem */
+    letter-spacing: 0px;
+  }
+  
+  .dashboard-paragraph {
+   font-family: 'Albert Sans', sans-serif;
+    font-weight: 400;         /* Regular weight */
+    font-style: normal;       /* 'Regular' maps to 'normal' in CSS */
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: 0;
+  }
+  
+  .dashboard-link {
+    text-decoration: underline;
+    font-weight: 500;
+    color: #000000;
+  }
+  

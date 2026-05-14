@@ -1,0 +1,50 @@
+.appointments-outer-container {
+  width: 90%;
+}
+
+.appointments-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 18px;
+  margin-left: 4px;
+}
+
+.appointments-status-tabs {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 32px;
+  margin-left: 2px;
+}
+
+.tab-btn {
+  padding: 8px 20px;
+  text-color: #6600CC;
+  font-weight: 600;
+  border-radius: 8px;
+  font-size: 16px;
+  border: 1px solid #ECEAEC;
+  color: #4B4B4B;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+.tab-btn.active {
+  background: transparent;
+  border: 1px solid #6600CC;
+  color: #6600CC;
+  font-weight: 600;
+}
+
+.appointments-page {
+  padding: 32px 24px;
+  background: #fff;
+  border-radius: 16px;
+  border: 1.5px solid #eee;
+  width: 100%;
+}
+
+.appointments-list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}

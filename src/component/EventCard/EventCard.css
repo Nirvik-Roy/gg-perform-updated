@@ -1,0 +1,112 @@
+.gx9-card-box {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 18px;
+  border: 1px solid rgba(238, 234, 234, 1);
+  height: fit-content;
+  cursor: pointer;
+}
+
+.gx9-image-container {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.gx9-main-image {
+  width: 100%;
+  max-height: 220px;
+  min-height: 220px;
+  object-fit: cover;
+  display: block;
+  border-radius: 12px;
+  position: relative;
+}
+
+.gx9-menu-button {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 30px;
+  height: 30px;
+  background-color: #ffffff;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 4px;
+  box-shadow: 0px 0px 15px #11111138;
+  cursor: pointer;
+}
+
+.gx9-menu-button span {
+  width: 4px;
+  height: 4px;
+  background-color: #7a35ff;
+  border-radius: 50%;
+  display: block;
+}
+
+.gx9-content-area {
+  padding: 18px 6px 0px 6px;
+}
+
+.gx9-event-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 0 10px 0;
+  color: #222222;
+}
+
+.gx9-location-row {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #666666;
+  font-size: 13px;
+  margin-bottom: 10px;
+}
+.gx9-location-row img{
+    width: 10px;
+    margin-top: -2px;
+}
+.gx9-datetime-row {
+  display: flex;
+  justify-content: space-between;
+  color: #666666;
+  font-size: 13px;
+  margin-bottom: 12px;
+}
+
+.gx9-date,
+.gx9-time {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.gx9-date img{
+    width: 10px;
+    margin-top: -4px;
+}
+.gx9-time img{
+    width: 12px;
+    margin-top: -4px;
+}
+.gx9-price-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.gx9-old-price {
+  font-size: 18px;
+  color: #888888;
+  text-decoration: line-through;
+}
+
+.gx9-new-price {
+  font-size: 22px;
+  font-weight: 600;
+  color: #111111;
+}

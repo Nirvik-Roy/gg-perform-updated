@@ -1,0 +1,55 @@
+.booking-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 24px;
+}
+.total {
+  font-size: 16px;
+}
+.btn-primary,
+.btn-secondary {
+  padding: 10px 24px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  color: black;
+}
+.btn-primary {
+  background: #7b61ff;
+  /* color: black; */
+}
+.btn-primary:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+.btn-secondary {
+  background: #e5e7eb;
+}
+.link {
+  background: none;
+  border: none;
+  color: #7b61ff;
+  cursor: pointer;
+  font-size: 13px;
+}
+.actions{
+    /* margin-left: 50px; */
+    margin-top: 15px;
+    align-items: end;
+    justify-content: end;
+    display: flex;
+    gap: 25px;
+}
+.btn-primary{
+    padding: 16px 30px;
+    border-radius: 12px;
+    color: #FFFFFF;
+
+}
+.btn-secondary{
+    padding: 16px 30px;
+    border-radius: 12px;
+    color: #343434;
+}

@@ -1,0 +1,41 @@
+.viewslots-container {
+    padding: 24px;
+  }
+  
+  .viewslots-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .viewslots-badge {
+    background-color: #6c63ff;
+    color: white;
+    padding: 4px 10px;
+    font-size: 12px;
+    border-radius: 12px;
+  }
+
+  .course-title-arrow {
+    width: 12px;
+    height: 20px;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+    flex-shrink: 0;
+    cursor: pointer;
+  }
+
+  .course-title-arrow:hover {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+  
+  .viewslots-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  

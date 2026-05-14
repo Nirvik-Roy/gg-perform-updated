@@ -1,0 +1,55 @@
+.timeslots h4 {
+  margin-bottom: 25px;
+  font-size: 20px;
+}
+.timeslots-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+}
+/* .slot { padding:16px 12px; border:1px solid #d1d5db; border-radius:6px; background:#6600CC;  cursor:pointer; font-size:12px; } */
+.slot {
+  padding: 18px 14px;
+  /* border: 1px solid #d1d5db; */
+  border: none;
+  border-radius: 12px;
+  background: rgba(102, 0, 204, 0.1); /* Purple with 80% opacity */
+  cursor: pointer;
+  font-size: 14px;
+  color: #343434; /* Ensure text is readable */
+}
+.slot.active {
+  background: #edebff;
+  border: 1px solid#6600CC;
+  color: #6600cc;
+}
+.slot:hover:not(.active) {
+  background: #f9fafb;
+}
+.timeslots {
+  border-left: 1px solid #d9d9d9;
+  padding-left: 30px;
+}
+@media (max-width: 768px) {
+  .timeslots {
+    border-left: none;
+    padding-left: 0;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  .timeslots h4 {
+    font-size: 18px;
+    margin-bottom: 16px;
+  }
+
+  .timeslots-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 per row on small screens */
+    gap: 10px;
+  }
+
+  .slot {
+    font-size: 13px;
+    padding: 14px 10px;
+  }
+}

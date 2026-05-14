@@ -1,0 +1,74 @@
+.viewslots-container {
+  width: 90%;
+}
+
+.viewslots-title {
+  font-size: 1.25rem; /* text-xl */
+  font-weight: 700;   /* font-bold */
+  margin-bottom: 0.5rem; /* mb-2 */
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.viewslots-badge {
+  margin-left: 0.5rem; /* ml-2 */
+  padding: 0.25rem 0.5rem; /* px-2 py-1 */
+  background-color: #FFF0BD;
+  color: #0D0D0D;
+  font-size: 0.75rem; /* text-xs */
+  font-weight: 500;   /* font-medium */
+  border-radius: 0.25rem; /* rounded */
+}
+
+.course-title-arrow {
+  width: 12px;
+  height: 20px;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.course-title-arrow:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.viewslots-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-top: 1.5rem;
+  width: 100%;
+}
+
+/* Tablet */
+@media (min-width: 640px) {
+  .viewslots-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Small Desktop */
+@media (min-width: 768px) {
+  .viewslots-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Large Desktop */
+@media (min-width: 1024px) {
+  .viewslots-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+/* Extra Large Desktop */
+@media (min-width: 1280px) {
+  .viewslots-grid {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+

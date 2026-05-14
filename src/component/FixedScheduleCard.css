@@ -1,0 +1,55 @@
+.fixed-schedule-card-container {
+    width: 100%;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+    margin-bottom: 24px;
+    overflow-x: auto;
+  }
+  
+  .fixed-schedule-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'League Spartan', sans-serif;
+    table-layout: auto;
+  }
+  
+  .fixed-schedule-table th,
+  .fixed-schedule-table td {
+    padding: 20px 16px;
+    border-bottom: 1px solid #ececec;
+    text-align: left;
+    vertical-align: middle;
+  }
+  
+  .fixed-schedule-table th {
+    background: #2d1846;
+    color: #fff;
+    font-weight: 600;
+    font-size: 14px;
+  }
+  
+  .fixed-schedule-table tr.even-row {
+    background: #f8f8fb;
+  }
+  
+  .meeting-link-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #6c63ff;
+    cursor: pointer;
+  }
+  
+  .meeting-link-icon svg {
+    transition: transform 0.2s;
+  }
+  
+  .meeting-link-icon:hover svg {
+    transform: scale(1.1);
+  }
+  
+  .no-link {
+    color: #bbb;
+  }
+  

@@ -1,0 +1,135 @@
+.auth-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* min-height: 100vh; */
+  background-color: white;
+  padding: 0 1rem;
+  box-sizing: border-box;
+}
+
+.auth-tab-bar {
+  display: flex;
+  margin-bottom: 2rem;
+  position: relative;
+  /* border-bottom: 1px solid #e5e7eb; */
+  width: 100%;
+  max-width: 400px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.auth-tab {
+  width: 20%;
+  padding: 1rem 0;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 500;
+  background: none;
+  border: none;
+  cursor: pointer;
+  position: relative;
+}
+
+.auth-tab.active {
+  color: #6b21a8;
+  border-bottom: 3px solid #6b21a8;
+}
+
+.auth-tab.inactive {
+  color: #6b7280;
+  border-bottom: 3px solid transparent;
+}
+
+.auth-tab:hover {
+  color: #6b21a8;
+}
+
+.auth-tab-indicator {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  width: 50%;
+  background-color: #6b21a8;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 2px 2px 0 0;
+}
+
+.auth-tab-indicator.right {
+  transform: translateX(100%);
+}
+
+.auth-tab-indicator.left {
+  transform: translateX(0%);
+}
+
+.auth-form-slider-wrapper {
+  /* width: 100%; */
+  width: 600px;
+  overflow: hidden;
+  height: fit-content;
+}
+
+.auth-form-slider {
+  display: flex;
+  width: 200%;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.auth-form-slider.slide-login {
+  transform: translateX(0%);
+}
+
+.auth-form-slider.slide-register {
+  transform: translateX(-50%);
+}
+
+.auth-form {
+  width: 50%;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .auth-container {
+    padding: 0.5rem;
+    /* min-height: 100vh; */
+  }
+
+  .auth-tab-bar {
+    max-width: 100%;
+    margin-bottom: 1.5rem;
+  }
+
+  .auth-tab {
+    font-size: 0.9rem;
+    padding: 0.75rem 0;
+  }
+
+  .auth-form-slider-wrapper {
+    width: 100%;
+  }
+
+  .auth-form {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .auth-container {
+    padding: 0.25rem;
+  }
+
+  .auth-form {
+    padding: 1rem;
+  }
+
+  .auth-tab {
+    font-size: 0.85rem;
+    padding: 0.5rem 0;
+  }
+}
