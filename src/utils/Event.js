@@ -30,13 +30,9 @@ export const getSingleEvent = async (id) => {
 
 export const submitEventEnquiry = async (eventId, payload) => {
     const Token = localStorage.getItem('gg website token');
-    if (Token && eventId && payload) {
+    if (eventId && payload) {
         try {
-            const res = await axios.post(`${import.meta.env.VITE_API_BASE_URL}frontend/events/${eventId}/enquiry`, payload, {
-                headers: {
-                    'Authorization': `Bearer ${JSON.parse(Token)}`
-                }
-            },);
+            const res = await axios.post(`${import.meta.env.VITE_API_BASE_URL}frontend/events/${eventId}/enquiry`, payload);
             if (res?.data?.status == "success") {
                 return res
             }
@@ -51,17 +47,11 @@ export const submitEventEnquiry = async (eventId, payload) => {
 // ── Step: Checkout Preview ────────────────────────────────────────────────────
 export const checkoutPreview = async (eventId, payload) => {
     const Token = localStorage.getItem('gg website token');
-    if (Token && eventId && payload) {
+    if ( eventId && payload) {
         try {
             const res = await axios.post(
                 `${import.meta.env.VITE_API_BASE_URL}frontend/events/${eventId}/checkout-preview`,
-                payload,
-                {
-                    headers: {
-                        'Authorization': `Bearer ${JSON.parse(Token)}`,
-                        'Content-Type': 'application/json',
-                    },
-                }
+                payload
             );
             if (res?.data?.status === 'success') {
                 return res;
@@ -76,17 +66,11 @@ export const checkoutPreview = async (eventId, payload) => {
 // ── Step: Apply Coupon ────────────────────────────────────────────────────────
 export const applyCoupon = async (payload) => {
     const Token = localStorage.getItem('gg website token');
-    if (Token && payload) {
+    if (payload) {
         try {
             const res = await axios.post(
                 `${import.meta.env.VITE_API_BASE_URL}frontend/events/apply-coupon`,
-                payload,
-                {
-                    headers: {
-                        'Authorization': `Bearer ${JSON.parse(Token)}`,
-                        'Content-Type': 'application/json',
-                    },
-                }
+                payload
             );
             if (res?.data?.status === 'success') {
                 return res;
