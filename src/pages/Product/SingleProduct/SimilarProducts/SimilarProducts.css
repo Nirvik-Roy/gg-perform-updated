@@ -1,0 +1,14 @@
+.similar_product_wrapper {
+  padding: 0px 10px;
+}
+.similar_product_wrapper h3 {
+  font-weight: 1000;
+  color: linear-gradient(90deg, #0d0d0d 0%, #6600cc 81.2%);
+  font-size: 40px;
+  margin-bottom: 30px;
+}
+.similar_grid_wrapper{
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(280px,1fr));
+    gap: 30px;
+}

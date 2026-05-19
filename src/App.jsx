@@ -44,6 +44,8 @@ import EventDetails from './pages/Event/EventDetails/EventDetails'
 import EventCheckout from './pages/Event/EventCheckout/EventCheckout'
 import CheckoutSuccessPage from './pages/Event/EventCheckout/CheckoutSuccessPage'
 import CheckoutFailedPage from './pages/Event/EventCheckout/CheckoutFailedPage'
+import Product from './pages/Product/Product'
+import SingleProduct from './pages/Product/SingleProduct/SingleProduct'
 
 
 
@@ -82,11 +84,13 @@ function App() {
             <Route path='refund' element={<RefundPolicy />} />
             <Route path='cart' element={<AddToCart />} />
             <Route path='wish-list' element={<Wishlist />} />
-            <Route path='events' element={<AllEvents/>}/>
-            <Route path='event-details/:slug/:id' element={<EventDetails/>}/>
-            <Route path='events/checkout/:id' element={<EventCheckout/>}/>
-            <Route path='events/checkout/success' element={<CheckoutSuccessPage/>}></Route>
+            <Route path='events' element={<AllEvents />} />
+            <Route path='event-details/:slug/:id' element={<EventDetails />} />
+            <Route path='events/checkout/:id' element={<EventCheckout />} />
+            <Route path='events/checkout/success' element={<CheckoutSuccessPage />}></Route>
             <Route path='events/checkout/failed' element={<CheckoutFailedPage />}></Route>
+            <Route path='products' element={<Product />} />
+            <Route path='products/:id' element={<SingleProduct/>}/>
             {/* <Route path='blog' element={<Blog />} /> */}
             {/* <Route path='blog1' element={<Blog1 />} /> */}
             {/* <Route path='blog-detail' element={<BlogDetail/>}/> */}

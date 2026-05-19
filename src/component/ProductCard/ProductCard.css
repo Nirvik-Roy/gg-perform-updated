@@ -1,0 +1,153 @@
+/* Card wrapper */
+.pc1000 {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    cursor: pointer;
+    box-shadow: 0px 2px 12px 0px rgba(0, 0, 0, 0.07);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+/* Image container */
+.pc1001 {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background: #f5f5f5;
+    border-radius: 8px;
+    height: 280px;
+    overflow: visible;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Product image */
+.pc1002 {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+/* 3 dot button wrapper */
+.pc1003 {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    z-index: 10;
+}
+
+/* 3 dot button */
+.pc1004 {
+    width: 32px;
+    height: 32px;
+    border-radius: 3px;
+    background: #ffffff;
+    border: 1px solid rgba(217, 217, 217, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+
+/* 3 dots icon */
+.pc1005 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #7b2ff7;
+    line-height: 1;
+    letter-spacing: 1px;
+}
+
+/* Backdrop */
+.pc1006 {
+    position: fixed;
+    inset: 0;
+    z-index: 20;
+}
+
+/* Dropdown menu */
+.pc1007 {
+    position: absolute;
+    top: 42px;
+    right: 0;
+    background: #ffffff;
+    border: 1px solid #eeeeee;
+    border-radius: 10px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    z-index: 30;
+    min-width: 130px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Dropdown item */
+.pc1008 {
+    padding: 10px 16px;
+    background: transparent;
+    border: none;
+    text-align: left;
+    font-size: 13px;
+    color: #222222;
+    cursor: pointer;
+    transition: background 0.15s ease;
+}
+
+.pc1008:hover {
+    background: #f5f0ff;
+    color: #7b2ff7;
+}
+
+/* Delete item */
+.pc1009 {
+    color: #e53935;
+}
+
+.pc1009:hover {
+    background: #fdecea;
+    color: #e53935;
+}
+
+/* Info section */
+.pc1010 {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 0 4px;
+}
+
+/* Product name */
+.pc1011 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #111111;
+    margin: 0;
+    line-height: 1.4;
+}
+
+/* Price row */
+.pc1012 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 5px;
+}
+
+/* Original price — strikethrough */
+.pc1013 {
+    font-size: 17px;
+    color: #aaaaaa;
+    text-decoration: line-through;
+}
+
+/* Sale price */
+.pc1014 {
+    font-size: 22px; 
+    font-weight: 500;
+    color: #111111;
+}

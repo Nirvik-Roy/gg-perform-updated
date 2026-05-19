@@ -1,0 +1,297 @@
+/* Wrapper */
+.pt1000 {
+  width: 100%;
+  margin: 0 auto;
+  padding: 32px 20px;
+  box-sizing: border-box;
+}
+
+/* Tab header */
+.pt1001 {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+/* Tab button */
+.pt1002 {
+  background: transparent;
+  border: none;
+  font-size: 32px;
+  font-weight: 1000;
+  color: #111111;
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.2s ease;
+}
+
+.pt1002:hover {
+  color: #7b2ff7;
+}
+
+/* Active tab */
+.pt1002_active {
+  color: #7b2ff7;
+}
+
+/* Divider between tabs */
+.pt1003 {
+  width: 2px;
+  height: 28px;
+  background: #cccccc;
+  flex-shrink: 0;
+}
+
+/* ── Description ── */
+.pt1004 {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.pt1005 {
+  font-size: 17px;
+  color: #444444;
+  line-height: 1.8;
+  margin: 0;
+}
+
+.pt1006 {
+  padding-left: 20px;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.pt1007 {
+  font-size: 14px;
+  color: #444444;
+  line-height: 1.7;
+}
+
+/* ── Reviews ── */
+.pt1008 {
+  display: flex;
+  flex-direction: row;
+  gap: 32px;
+  align-items: flex-start;
+}
+
+/* Summary box */
+.pt1009 {
+  width: 285px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Summary title */
+.pt1010 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #111111;
+  margin: 0;
+}
+
+/* Overall rating row */
+.pt1011 {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Rating number */
+.pt1012 {
+  font-size: 18px;
+  font-weight: 800;
+  color: #111111;
+}
+
+/* Reviews count */
+.pt1013 {
+  font-size: 12px;
+  color: #888888;
+}
+
+/* Rating bars */
+.pt1014 {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Single bar row */
+.pt1015 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Star number */
+.pt1016 {
+  font-size: 16px;
+  color: #555555;
+  width: 10px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+/* Bar track */
+.pt1017 {
+  flex: 1;
+  height: 10px;
+  background: #e5e5e5;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+/* Bar fill */
+.pt1018 {
+  height: 100%;
+  background: #f5c800;
+  border-radius: 4px;
+  transition: width 0.3s ease;
+}
+
+/* Stars */
+.pt1020 {
+  display: flex;
+  gap: 2px;
+}
+
+.pt1021 {
+  color: #f5c800;
+  font-size: 16px;
+}
+
+.pt1022 {
+  color: #dddddd;
+  font-size: 16px;
+}
+
+/* ── Review cards area ── */
+.pt1023 {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  overflow: hidden;
+}
+
+/* Cards row */
+.pt1024 {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: 1fr 1fr 1fr;
+  overflow-x: hidden;
+  scrollbar-width: none;
+}
+
+.pt1024::-webkit-scrollbar {
+  display: none;
+}
+
+/* Single review card */
+.pt1025 {
+  min-width: 100%;
+  flex-shrink: 0;
+  border: 1px solid #eeeeee;
+  border-radius: 12px;
+  padding: 18px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: #ffffff;
+}
+
+/* Reviewer info row */
+.pt1026 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Avatar */
+.pt1027 {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+/* Reviewer name block */
+.pt1028 {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Reviewer name */
+.pt1029 {
+  font-size: 14px;
+  font-weight: 700;
+  color: #111111;
+  margin: 0;
+}
+
+/* Rating + date row */
+.pt1030 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* Review date */
+.pt1031 {
+  font-size: 12px;
+  color: #888888;
+}
+
+/* Review text */
+.pt1032 {
+  font-size: 13px;
+  color: #444444;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Dots */
+.pt1033 {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+/* Dot button */
+.pt1034 {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #dddddd;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.2s ease;
+}
+
+/* Active dot */
+.pt1034_active {
+  background: #7b2ff7;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .pt1008 {
+    flex-direction: column;
+  }
+
+  .pt1009 {
+    width: 100%;
+  }
+}
