@@ -23,5 +23,9 @@ export const formatDate = (
 ) => {
     if (!date) return "";
 
-    return new Date(date).toLocaleDateString("en-US", options);
+    const [year, month, day] = date.split("-");
+
+    const localDate = new Date(year, month - 1, day);
+
+    return localDate.toLocaleDateString("en-US", options);
 };
