@@ -23,9 +23,13 @@ export const formatDate = (
 ) => {
     if (!date) return "";
 
-    const [year, month, day] = date.split("-");
+    // If it's a date-only string (YYYY-MM-DD), parse manually to avoid timezone shift
+    if (typeof date === "string" && /^\d{4}-\d{2}-\d{2}$/.test(date)) {
+        const [year, month, day] = date.split("-").map(Number)
+        const newDate = new Date(year, month - 1, day) // local time, no UTC shift
+        return newDate.toLocaleDateString("en-US", options)
+    }
 
-    const localDate = new Date(year, month - 1, day);
-
-    return localDate.toLocaleDateString("en-US", options);
+    const newDate = new Date(date)
+    return newDate.toLocaleDateString("en-US", { ...options, timeZone: "UTC" })
 };
