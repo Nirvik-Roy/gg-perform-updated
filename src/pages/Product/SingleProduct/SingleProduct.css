@@ -218,7 +218,11 @@
   color: #444444;
   line-height: 1.7;
 }
-
+.fs1006{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 /* ── Responsive ── */
 @media (max-width: 768px) {
   .pd1007 {

@@ -6,9 +6,8 @@ const ProductCard = ({
     name = 'BAR Run club Vest – Jamaica',
     originalPrice = 97,
     salePrice = 67,
-    onEdit,
-    onDelete,
     onView,
+    onAddToCart,
 }) => {
     return (
         <div className="pc1000">
@@ -21,23 +20,30 @@ const ProductCard = ({
             {/* Info */}
             <div className="pc1010">
                 <p className="pc1011">{name}</p>
-               <div style={{
-                display:'flex',
-                justifyContent:'space-between',
-                alignItems:'center'
-               }}>
-                <div className="pc1012">
-                    <span className="pc1013">${originalPrice}</span>
-                    <span className="pc1014">${salePrice}</span>
+                <div style={{
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'center'
+                }}>
+                    <div className="pc1012">
+                        <span className="pc1013">${originalPrice}</span>
+                        <span className="pc1014">${salePrice}</span>
+                    </div>
+
+                    {/* ✅ Cart Icon with onClick */}
+                    <img
+                        src='/shopping_cart (1).svg'
+                        onClick={(e) => {
+                            e.stopPropagation(); // prevent card click
+                            onAddToCart?.();
+                        }}
+                        style={{ cursor: 'pointer' }}
+                        alt="Add to cart"
+                    />
                 </div>
-
-                <img src='/shopping_cart (1).svg'/>
-
-               </div>
             </div>
-
         </div>
     )
 }
 
-export default ProductCard
+export default ProductCard;
