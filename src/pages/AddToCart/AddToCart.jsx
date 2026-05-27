@@ -7,6 +7,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import "./AddToCart.css";
 
 function AddToCart() {
+  const [quantities, setQuantities] = useState({});
   const location = useLocation();
   const navigate = useNavigate();
   const { setBannerTitle, setBreadcrumb, setBannerImage } = useBanner();
@@ -16,12 +17,13 @@ function AddToCart() {
     loading: cartLoading,
     error: cartError,
     clearError,
-    isAuthenticated
+    isAuthenticated,
+    refreshCart
   } = useCart();
-  
+
   // Track which item is being deleted for skeleton animation
   const [deletingItemId, setDeletingItemId] = useState(null);
-  
+
   // const {
   //   appliedCoupon,
   //   isLoading: couponLoading,
@@ -32,7 +34,7 @@ function AddToCart() {
   //   clearMessages
   // } = useCouponContext();
 
-  const subtotal = cartItems.reduce((sum, item) => sum + (parseFloat(item.price) || 0), 0);
+  const subtotal = cartItems.reduce((sum, item) => sum + (parseFloat(item.price) * item?.quantity || 0), 0);
   // const deliveryFee = 4.78;
 
   // // Calculate discount properly
@@ -59,7 +61,7 @@ function AddToCart() {
     if (deletingItemId !== null) {
       return;
     }
-    
+
     setDeletingItemId(itemId);
     try {
       await removeFromCart(itemId);
@@ -74,18 +76,60 @@ function AddToCart() {
     setBannerImage("/other-banner.png");
   }, [setBannerTitle, setBreadcrumb, setBannerImage]);
 
+
+  // Initialize quantities from cartItems
+  // Initialize from item.quantity
+  useEffect(() => {
+    const initialQuantities = {};
+    cartItems.forEach(item => {
+      if (item.itemType === 'product') {
+        initialQuantities[item.id] = item.quantity;
+      }
+    });
+    setQuantities(initialQuantities);
+  }, [cartItems]);
+
+  // Add this handler
+  const handleQuantityChange = async (itemId, newQty) => {
+    if (newQty < 1) return;
+
+    
+
+    try {
+      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}frontend/cart/${itemId}`, {
+        method: "PATCH",
+        headers: {
+          "Authorization": `Bearer ${JSON.parse(localStorage.getItem('gg website token'))}`,
+          "Content-Type": "application/json",
+          "Accept": "application/json",
+        },
+        body: JSON.stringify({ quantity: newQty }),
+      });
+
+      if (!response.ok) {
+        // Revert on failure
+        setQuantities(prev => ({ ...prev, [itemId]: newQty }));
+        setQuantities(prev => ({ ...prev, [itemId]: prev[itemId] }));
+        console.error("Failed to update quantity");
+      }
+      refreshCart()
+    } catch (error) {
+      console.error("Error updating quantity:", error);
+    }
+  };
   const getTagsFromArray = (tagArray) => {
     return (tagArray || []).map((tag) => {
       // Handle tags from API response object fields
-      if (tag=== 'Live Sessions') return { label: tag, className: 'tag-live' };
-      if (tag=== 'fixed') return { label: tag, className: 'tag-fixed' };
-      if (tag=== 'Resource Only') return { label: tag, className: 'tag-resource' };
-      if (tag=== 'flexible') return { label: tag, className: 'tag-schedule' };
+      if (tag === 'Live Sessions') return { label: tag, className: 'tag-live' };
+      if (tag === 'fixed') return { label: tag, className: 'tag-fixed' };
+      if (tag === 'Resource Only') return { label: tag, className: 'tag-resource' };
+      if (tag === 'flexible') return { label: tag, className: 'tag-schedule' };
 
       // Default case for any other tags from API
       return { label: tag, className: 'tag-default' };
     });
   };
+
 
 
   const renderStars = (rating) => {
@@ -318,13 +362,13 @@ function AddToCart() {
         {cartItems.map((item, index) => {
           const tags = getTagsFromArray(item.tag);
           // Use strict comparison and ensure both values are defined
-          const isDeleting = deletingItemId !== null && 
-                            deletingItemId !== undefined && 
-                            item.id !== null && 
-                            item.id !== undefined && 
-                            deletingItemId === item.id;
-          
-          
+          const isDeleting = deletingItemId !== null &&
+            deletingItemId !== undefined &&
+            item.id !== null &&
+            item.id !== undefined &&
+            deletingItemId === item.id;
+
+
           return (
             <div className={`cart-item ${isDeleting ? 'deleting' : ''}`} key={`cart-item-${item.id}`}>
               {isDeleting && (
@@ -344,10 +388,10 @@ function AddToCart() {
                   <div className="skeleton-action"></div>
                 </div>
               )}
-              
-              <img 
-                src={item.image} 
-                alt={item.title} 
+
+              <img
+                src={item.image}
+                alt={item.title}
                 onError={(e) => {
                   e.target.src = '/course.png';
                 }}
@@ -366,10 +410,66 @@ function AddToCart() {
                   <span className="review" style={{ color: '#777', fontSize: '14px', marginTop: '5px' }}>({item.reviews}+ Reviews)</span>
                 </div> */}
                 <h4>{item.title}</h4>
+                <p>{item?.description}</p>
                 <div className="price">
                   <span className="old-price">${parseFloat(item.originalPrice).toFixed(2)}</span>
                   <span className="new-price">${parseFloat(item.price).toFixed(2)}</span>
                 </div>
+                {item?.itemType === 'product' && (
+                  <>
+                  
+                    <div style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '10px',
+                      marginTop: '10px'
+                    }}>
+                      <button
+                        onClick={() => handleQuantityChange(item.id, quantities[item.id] - 1)}
+                        disabled={isDeleting || (quantities[item.id] ) <= 1}
+                        style={{
+                          width: '30px',
+                          height: '30px',
+                          borderRadius: '50%',
+                          border: '1px solid #6600CC',
+                          backgroundColor: 'white',
+                          color: '#6600CC',
+                          fontSize: '18px',
+                          cursor: (quantities[item.id] ) <= 1 ? 'not-allowed' : 'pointer',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          opacity: (quantities[item.id] ) <= 1 ? 0.4 : 1,
+                        }}
+                      >
+                        −
+                      </button>
+                      <span style={{ fontWeight: '600', minWidth: '20px', textAlign: 'center' }}>
+                        {quantities[item.id] }
+                      </span>
+                      <button
+                        onClick={() => handleQuantityChange(item.id, quantities[item.id] + 1)}
+                        disabled={isDeleting}
+                        style={{
+                          width: '30px',
+                          height: '30px',
+                          borderRadius: '50%',
+                          border: '1px solid #6600CC',
+                          backgroundColor: '#6600CC',
+                          color: 'white',
+                          fontSize: '18px',
+                          cursor: 'pointer',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                        }}
+                      >
+                        +
+                      </button>
+                    </div>
+                  </>
+                )}
+               
               </div>
               <div className="item-actions" style={{ opacity: isDeleting ? 0.3 : 1 }}>
                 <button
@@ -417,8 +517,8 @@ function AddToCart() {
               <span>${subtotal.toFixed(2)}</span>
             </div>
             {/* <div className="summary-row"> */}
-              {/* <span>Delivery Fee:</span> */}
-              {/* <span>${deliveryFee.toFixed(2)}</span> */}
+            {/* <span>Delivery Fee:</span> */}
+            {/* <span>${deliveryFee.toFixed(2)}</span> */}
             {/* </div> */}
             {/* {appliedCoupon && (
               <div className="summary-row" style={{ color: 'green', fontWeight: '600' }}>

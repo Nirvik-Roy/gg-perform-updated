@@ -11,8 +11,11 @@ import { getProducts, getProductCategories } from '../../utils/productUtils'; //
 import { toast } from 'react-hot-toast';
 import { addToCartApi } from "../../utils/cart.js";
 import AuthModal from "../../component/AuthModal.jsx";
+import { getCartItems } from "../../services/cartService.js";
+import { useCart } from "../../context/CartContext.jsx";
 
 export default function Product() {
+    const { refreshCart } = useCart()
     const { setBannerTitle, setBreadcrumb, setBannerImage } = useBanner();
     const navigate = useNavigate();
 
@@ -138,6 +141,7 @@ export default function Product() {
                 });
                 if (res?.status === 'success') {
                     toast.success('Product added to cart!');
+                    refreshCart()
                 }
 
             } catch (err) {

@@ -76,13 +76,13 @@ export default function Checkout() {
         }
 
         // Ensure price is a valid number
-        const price = parseFloat(item.course?.sale_price) || 0;
-        const originalPrice = parseFloat(item.course?.original_price) || 0;
+        const price = parseFloat(item.course?.sale_price || item?.product?.sale_price) || 0;
+        const originalPrice = parseFloat(item.course?.original_price || item?.product?.original_price) || 0;
 
         // Calculate average rating from reviews array
         let averageRating = 0;
         let reviewCount = 0;
-        
+
         if (item.course?.reviews && item.course.reviews.length > 0) {
           const totalRating = item.course.reviews.reduce((sum, review) => sum + review.rating, 0);
           averageRating = totalRating / item.course.reviews.length;
@@ -101,15 +101,18 @@ export default function Checkout() {
         });
 
         return {
-          id: item.course?.id,
-          title: item.course?.course_name || 'Unknown Course',
-          image: item.course?.featured_image || '/course.png',
+          id: item.course?.id || item?.id || '',
+          title: item.course?.course_name || item?.product?.name || '',
+          image: item.course?.featured_image || item?.product?.main_image || '',
           price: price,
           originalPrice: originalPrice,
           rating: Math.round(averageRating * 10) / 10, // Round to 1 decimal place
           reviews: reviewCount, // Actual review count from API
           reviewsData: item.course?.reviews || [], // Store actual reviews data
-          tag: apiTags // Use tags from API object fields
+          tag: apiTags,// Use tags from API object fields
+          quantity:item?.quantity || 1, 
+          description:item?.product?.short_description || '',
+          itemType : item?.item_type || ''
         };
       })
       setCartItems(filteredData);
@@ -119,11 +122,11 @@ export default function Checkout() {
 
   // ──────────────────────────────────────  helpers
   // const deliveryFee = 4.78;
-
+  console.log(cartItems)
   // Calculate subtotal with proper number parsing
   const subtotal = cartItems.reduce((sum, item) => {
-    const price = parseFloat(item.price) || 0;
-    return sum + price;
+    const price = parseFloat(item.price) * item?.quantity || 0;
+    return sum + price ;
   }, 0);
 
   // Calculate discount properly
@@ -208,7 +211,7 @@ export default function Checkout() {
 
         if (data.data.coupon.applicable_for === 'courses') {
           const extractAllCourseIdsFromCart = cartItems.map(item => item.id);
-          if(!data.data.coupon.applicable_course_ids.includesAll(extractAllCourseIdsFromCart)) {
+          if (!data.data.coupon.applicable_course_ids.includesAll(extractAllCourseIdsFromCart)) {
             const errorMessage = 'This coupon is not applicable for the courses in the cart'
             if (clearMessages) {
               clearMessages();
@@ -344,6 +347,7 @@ export default function Checkout() {
       console.log("Stripe session data:", data)
 
       if (response.ok && data.id) {
+        console.log(data)
         const stripe = await stripePromis;
         await stripe.redirectToCheckout({ sessionId: data.id })
       } else {
@@ -518,7 +522,12 @@ export default function Checkout() {
                       <span className="cart-reviews">({it.reviews} Review{it.reviews !== 1 ? 's' : ''})</span>
                     </div> */}
                     <h5 className="cart-item-title">{it.title}</h5>
-                    <div className="cart-item-price">
+                    {it?.itemType == 'product' && <p style={{
+                      marginTop:'-0px'
+                    }}>{it?.description}</p>}
+                    <div className="cart-item-price" style={{
+                      marginTop:'-10px'
+                    }}>
                       <span className="cart-old-price">${(parseFloat(it.originalPrice) || 0).toFixed(2)}</span>
                       <span className="cart-new-price">${(parseFloat(it.price) || 0).toFixed(2)}</span>
                     </div>
