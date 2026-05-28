@@ -310,7 +310,6 @@ export default function Checkout() {
   };
 
   const stripePromis = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY)
-
   const handleProceed = async () => {
     try {
       // Check if there's a pending coupon code that needs to be validated
@@ -349,6 +348,7 @@ export default function Checkout() {
       if (response.ok && data.id) {
         console.log(data)
         const stripe = await stripePromis;
+        console.log(stripe)
         await stripe.redirectToCheckout({ sessionId: data.id })
       } else {
         console.error("Failed to create Stripe session:", data);
@@ -523,8 +523,9 @@ export default function Checkout() {
                     </div> */}
                     <h5 className="cart-item-title">{it.title}</h5>
                     {it?.itemType == 'product' && <p style={{
-                      marginTop:'-0px'
-                    }}>{it?.description}</p>}
+                      fontSize:'13px',
+                      marginTop:'0'
+                    }} dangerouslySetInnerHTML={{ __html: it?.description }}>{}</p>}
                     <div className="cart-item-price" style={{
                       marginTop:'-10px'
                     }}>

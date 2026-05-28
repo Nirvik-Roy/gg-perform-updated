@@ -4,8 +4,8 @@ import './ProductCard.css'
 const ProductCard = ({
     image,
     name = 'BAR Run club Vest – Jamaica',
-    originalPrice = 97,
-    salePrice = 67,
+    originalPrice,
+    salePrice,
     onView,
     onAddToCart,
 }) => {
@@ -25,10 +25,14 @@ const ProductCard = ({
                     justifyContent: 'space-between',
                     alignItems: 'center'
                 }}>
-                    <div className="pc1012">
+                    {salePrice && <div className="pc1012">
                         <span className="pc1013">${originalPrice}</span>
                         <span className="pc1014">${salePrice}</span>
-                    </div>
+                    </div>}
+
+                    {(originalPrice && !salePrice) && <div className="pc1012">
+                        <span className="pc1014">${originalPrice}</span>
+                    </div>}
 
                     {/* ✅ Cart Icon with onClick */}
                     <img

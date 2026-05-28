@@ -410,7 +410,7 @@ function AddToCart() {
                   <span className="review" style={{ color: '#777', fontSize: '14px', marginTop: '5px' }}>({item.reviews}+ Reviews)</span>
                 </div> */}
                 <h4>{item.title}</h4>
-                <p>{item?.description}</p>
+                {/* <p>{item?.description}</p> */}
                 <div className="price">
                   <span className="old-price">${parseFloat(item.originalPrice).toFixed(2)}</span>
                   <span className="new-price">${parseFloat(item.price).toFixed(2)}</span>

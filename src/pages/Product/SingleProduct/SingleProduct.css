@@ -102,12 +102,12 @@
   width: 100%;
   height: 1px;
   background: #e5e5e5;
-  margin: 10px 0 10px 0;
+  /* margin: 10px 0 10px 0; */
 }
 
 /* Short description */
 .pd1011 {
-  font-size: 19px;
+  font-size: 15px;
   color: rgba(52, 52, 52, 1);
   line-height: 1.8;
   margin: 0;
@@ -316,4 +316,325 @@
 
 .ac1004:active {
   background: rgba(102, 0, 204, 1);
+}
+
+/* ── Category Tag ── */
+/* ── Category Tag ── */
+.pd_category_tag {
+    display: inline-block;
+    background: #f0e6ff;
+    color: #6600CC;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 10px 12px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    letter-spacing: 0.3px;
+    width: fit-content;
+}
+
+/* ── Price ── */
+.pd_price_wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin: 10px 0;
+}
+
+.pd_sale_price {
+    font-size: 30px;
+    font-weight: 700;
+    color: #000;
+}
+
+.pd_original_price {
+    font-size: 16px;
+    color: #aaa;
+    text-decoration: line-through;
+}
+
+.pd_discount_badge {
+    background: #e6fff0;
+    color: #22a855;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 20px;
+    border: 1px solid #b3f0cc;
+}
+
+/* ── Image Discount Badge ── */
+.pd_img_discount_badge {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    background: #6600CC;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 5px 10px;
+    border-radius: 8px;
+    z-index: 2;
+}
+
+/* ── Stock Info ── */
+.pd_stock_info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: #666;
+    margin: -5px 0 0px 0;
+}
+
+.pd_stock_info i { color: #6600CC; }
+
+/* ── Selected Variant Info ── */
+.pd_selected_variant_info {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin: 10px 0;
+}
+
+.pd_attr_chip {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: #f0e6ff;
+    border: 1.5px solid #d4b0ff;
+    border-radius: 8px;
+    padding: 6px 14px;
+}
+
+.pd_attr_label {
+    font-size: 12px;
+    color: #888;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.pd_attr_value {
+    font-size: 13px;
+    font-weight: 700;
+    color: #6600CC;
+}
+
+.pd_color_dot_sm {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 1.5px solid #ddd;
+    flex-shrink: 0;
+    display: inline-block;
+}
+
+/* ── Disabled Quantity / Cart ── */
+.ac1002:disabled { opacity: 0.4; cursor: not-allowed; }
+.ac1004:disabled { opacity: 0.6; cursor: not-allowed; }
+
+/* ══════════════════════════════════════════════════════
+    VARIANT SECTION
+══════════════════════════════════════════════════════ */
+.pd_variant_section {
+    /* margin: 40px 0 30px 0; */
+}
+.pt1000{
+  padding-top: 0px;
+}
+.pd_variant_section_head {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.pd_variant_section_title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #111;
+    margin: 0;
+}
+
+.pd_variant_count {
+    background: #f0e6ff;
+    color: #6600CC;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 20px;
+}
+
+/* ── Swiper ── */
+.pd_variant_swiper {
+    padding: 10px 4px 20px 4px !important;
+}
+
+.pd_variant_swiper .swiper-button-next,
+.pd_variant_swiper .swiper-button-prev {
+    color: #6600CC;
+    background: #fff;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.12);
+    top: 40%;
+}
+
+.pd_variant_swiper .swiper-button-next::after,
+.pd_variant_swiper .swiper-button-prev::after {
+    font-size: 13px;
+    font-weight: 800;
+}
+
+/* ── Variant Card ── */
+.pd_variant_card {
+    width: 160px;
+    border: 1px solid #eee;
+    border-radius: 14px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.2s;
+    background: #fff;
+    /* box-shadow: 0 2px 8px rgba(0,0,0,0.05); */
+    user-select: none;
+}
+
+.pd_variant_card:hover {
+    border-color: #6600CC;
+    /* box-shadow: 0 4px 16px rgba(102,0,204,0.15); */
+    transform: translateY(-2px);
+}
+
+.pd_variant_card_active {
+    border-color: #6600CC;
+    /* box-shadow: 0 4px 20px rgba(102,0,204,0.2); */
+    background: #faf7ff;
+}
+
+.pd_variant_card_oos {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.pd_variant_card_oos:hover {
+    transform: none;
+    border-color: #eee;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+/* ── Variant Image ── */
+.pd_variant_img_wrapper {
+    width: 100%;
+    height: 130px;
+    position: relative;
+    overflow: hidden;
+    background: #f5f5f5;
+}
+
+.pd_variant_img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s;
+}
+
+.pd_variant_card:hover .pd_variant_img {
+    transform: scale(1.05);
+}
+
+/* ── Selected Check ── */
+.pd_variant_check {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 24px;
+    height: 24px;
+    background: #6600CC;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: 11px;
+    box-shadow: 0 2px 6px rgba(102,0,204,0.4);
+}
+
+/* ── Out of Stock Overlay ── */
+.pd_variant_oos_overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pd_variant_oos_overlay span {
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    background: rgba(0,0,0,0.6);
+    padding: 4px 8px;
+    border-radius: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* ── Variant Details ── */
+.pd_variant_details {
+    padding: 10px 12px;
+}
+
+.pd_variant_attrs {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 6px;
+}
+
+.pd_variant_size_tag {
+    background: #f0e6ff;
+    color: #6600CC;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 6px;
+}
+
+.pd_variant_color_dot {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 2px solid #eee;
+    display: inline-block;
+    flex-shrink: 0;
+}
+
+/* ── Variant Price ── */
+.pd_variant_price_wrapper {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.pd_variant_sale {
+    font-size: 15px;
+    font-weight: 700;
+    color: #6600CC;
+}
+
+.pd_variant_original {
+    font-size: 12px;
+    color: #aaa;
+    text-decoration: line-through;
+}
+
+/* ── Variant Stock ── */
+.pd_variant_stock {
+    font-size: 11px;
+    color: #888;
+    margin: 4px 0 0 0;
 }

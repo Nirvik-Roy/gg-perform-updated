@@ -22,8 +22,9 @@ export const CartProvider = ({ children }) => {
 
     try {
       const items = await getCartItems();
-
+        console.log(items)
       if (items && items.length > 0) {
+        
         const transformedItems = items.map((item) => {
           // Extract tags from API response object fields
           const apiTags = [];
@@ -47,7 +48,7 @@ export const CartProvider = ({ children }) => {
             id: item.course?.id || item?.id || '',
             title: item.course?.course_name || item?.product?.name || '',
             image: item.course?.featured_image || item?.product?.main_image,
-            price: item.course?.sale_price || item?.product?.sale_price || 0,
+            price: item.course?.sale_price || item?.product?.sale_price || item?.product?.original_price || item?.product_variant?.sale_price || item?.product_variant?.original_price || 0,
             originalPrice: item.course?.original_price || item?.product?.original_price || 0,
             rating: item.course?.rating || item.course?.course_rating || item.rating || 0,
             reviews: item.course?.reviews || item.course?.course_reviews || item.reviews || 0,

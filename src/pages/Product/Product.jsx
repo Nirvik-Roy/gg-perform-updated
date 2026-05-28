@@ -152,6 +152,29 @@ export default function Product() {
         }
     };
 
+
+    // ─── Add To Cart ───────────────────────────────────────────────
+    const addVariantProductCart = async (variantId,productId) => {
+        const token = localStorage.getItem('gg website token')
+        if (token) {
+            try {
+                // Call your addToCart API here
+                const res = await addToCartApi({
+                    product_variant_id: variantId,
+                    product_id:productId
+                });
+                if (res?.status === 'success') {
+                    toast.success('Product added to cart!');
+                    refreshCart()
+                }
+
+            } catch (err) {
+                toast.error('Failed to add product to cart');
+            }
+        } else {
+            goToCart()
+        }
+    };
     // ─── Filter Products ───────────────────────────────────────────
     const getFilteredProducts = () => {
         if (products?.length > 0) {
@@ -260,6 +283,7 @@ export default function Product() {
         setPriceRange(1000);
     };
 
+    console.log(currentItems)
     // ─── Visible Categories ────────────────────────────────────────
     const visibleCategories = showAllCategories
         ? categories
@@ -412,7 +436,7 @@ export default function Product() {
 
     return (
         <>
-            {authModal && <AuthModal isOpen={authModal} onClose={(()=>setShowAuthModal(false))}/>}
+            {authModal && <AuthModal isOpen={authModal} onClose={(() => setShowAuthModal(false))} />}
             {/* ── Mobile Hamburger ── */}
             {isMobile && !isSidebarOpen && (
                 <button className="hamburger-btn" onClick={() => setSidebarOpen(true)}>
@@ -454,17 +478,36 @@ export default function Product() {
 
                     <div className="card-grid" style={{ gap: '40px' }}>
                         {currentItems?.length > 0 ? (
-                            currentItems?.map((item) => (
-                                <ProductCard
-                                    key={item.id}
-                                    image={item.main_image}
-                                    name={item.name}
-                                    originalPrice={item.original_price}
-                                    salePrice={item.sale_price}
-                                    onView={() => navigate(`/products/${item.id}`)}
-                                    onAddToCart={() => addToCart(item.id)}
-                                />
-                            ))
+                            currentItems?.map((item) => {
+                                if (item?.type == 'single') {
+                                    return(
+
+                                    <ProductCard
+                                        key={item.id}
+                                        image={item.main_image}
+                                        name={item.name}
+                                        originalPrice={item.original_price}
+                                        salePrice={item.sale_price}
+                                        onView={() => navigate(`/products/${item.id}`)}
+                                        onAddToCart={() => addToCart(item.id)}
+                                    />
+                                    )
+                                } else {
+                                    return (
+                                        <ProductCard
+                                            key={item.id}
+                                            image={item?.variants?.[0]?.image}
+                                            name={item.name}
+                                            originalPrice={item?.variants?.[0]?.original_price}
+                                            salePrice={item?.variants?.[0]?.sale_price}
+                                            onView={() => navigate(`/products/${item.id}`)}
+                                            onAddToCart={() =>{ 
+                                                addVariantProductCart(item?.variants?.[0]?.id,item?.id)}}
+                                        />
+                                    )
+                                }
+
+                            })
                         ) : (
                             <div className="no-results">
                                 <h3>No results found</h3>
