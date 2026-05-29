@@ -424,7 +424,7 @@ const SingleProduct = () => {
                                     : singleProducts?.stock_quantity === 0
                             }
                         >
-                            <i className="fa-solid fa-cart-shopping" />
+                            {/* <i className="fa-solid fa-cart-shopping" /> */}
                             {isVariable && !selectedVariant
                                 ? 'Select Options'
                                 : 'Add to Cart'}
