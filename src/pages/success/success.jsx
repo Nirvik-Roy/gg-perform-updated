@@ -85,7 +85,7 @@ function Success() {
         </p>
 
         {/* Order Details */}
-        <div style={{
+        {/* <div style={{
           background: 'rgba(102, 0, 204, 0.05)',
           borderRadius: '12px',
           padding: '1.5rem',
@@ -158,7 +158,7 @@ function Success() {
               Start learning immediately
             </li>
           </ul>
-        </div>
+        </div> */}
 
         {/* Action Buttons */}
         <div style={{
@@ -196,7 +196,7 @@ function Success() {
           </button>
 
           <button
-            onClick={() => navigate('/training')}
+            onClick={() => navigate('/products')}
             style={{
               background: 'transparent',
               color: '#6600CC',
@@ -220,7 +220,7 @@ function Success() {
               e.target.style.transform = 'translateY(0)';
             }}
           >
-            Browse More Courses
+            Browse More Products
           </button>
         </div>
 
