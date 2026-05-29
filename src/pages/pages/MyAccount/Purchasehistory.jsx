@@ -64,17 +64,18 @@ const Purchasehistory = () => {
 
   // Process and map the API data to the expected format
   const processPurchaseData = (purchaseData, coursesData) => {
+    console.log(purchaseData[0]?.items?.[0]?.product?.name)
     return purchaseData.map(order => {
       // Map order items to include course details
       const processedItems = order.items.map(item => {
         const course = coursesData.find(course => course.id === item.course_id);
         return {
-          courseId: item.course_id,
-          name: course ? course.course_name : 'Unknown Course',
-          content: course ? course.course_type : 'Resource Only',
-          time: course ? course.live_session_type : null,
-          price: item.price,
-          image: course ? course.featured_image : '/course.png',
+          courseId: item?.course_id || item?.id,
+          name: course?.course?.course_name || item?.product?.name,
+          content: course?.course?.course_type || item?.item_type,
+          time: course?.course?.live_session_type || item?.created_at,
+          price: item.price || item?.subtotal,
+          image: course?.course?.featured_image || item?.product?.main_image,
         };
       });
 

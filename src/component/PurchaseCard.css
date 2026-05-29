@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;600&display=swap");
 
 .purchase-card {
   width: 100%;
@@ -9,7 +9,7 @@
   margin-bottom: 24px;
   background-color: white;
   border: 1px solid #ececec;
-  font-family: 'League Spartan', sans-serif;
+  font-family: "League Spartan", sans-serif;
 }
 
 .purchase-card-header {
@@ -27,7 +27,6 @@
 .purchase-card-date {
   font-size: 16px;
   color: #6b7280;
-  
 }
 
 .purchase-card-price-view {
@@ -120,6 +119,9 @@
   align-items: center;
   justify-content: center;
   text-align: center;
+  background-color: #5d5bdf;
+  color: #fff;
+  text-transform: capitalize;
 }
 
 .bg-live {
@@ -214,7 +216,6 @@
     align-items: center;
     gap: 12px;
     padding: 16px;
-
   }
 
   .purchase-card-item-image {
@@ -264,4 +265,3 @@
     height: 100%;
   }
 }
-

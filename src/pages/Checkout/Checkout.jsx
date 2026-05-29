@@ -76,8 +76,8 @@ export default function Checkout() {
         }
 
         // Ensure price is a valid number
-        const price = parseFloat(item.course?.sale_price || item?.product?.sale_price) || 0;
-        const originalPrice = parseFloat(item.course?.original_price || item?.product?.original_price) || 0;
+        const price = parseFloat(item.course?.sale_price || item?.product?.sale_price || item?.product_variant?.sale_price) || 0;
+        const originalPrice = parseFloat(item.course?.original_price || item?.product?.original_price || item?.product_variant?.original_price) || 0;
 
         // Calculate average rating from reviews array
         let averageRating = 0;
@@ -110,9 +110,9 @@ export default function Checkout() {
           reviews: reviewCount, // Actual review count from API
           reviewsData: item.course?.reviews || [], // Store actual reviews data
           tag: apiTags,// Use tags from API object fields
-          quantity:item?.quantity || 1, 
-          description:item?.product?.short_description || '',
-          itemType : item?.item_type || ''
+          quantity: item?.quantity || 1,
+          description: item?.product?.short_description || '',
+          itemType: item?.item_type || ''
         };
       })
       setCartItems(filteredData);
@@ -125,8 +125,8 @@ export default function Checkout() {
   console.log(cartItems)
   // Calculate subtotal with proper number parsing
   const subtotal = cartItems.reduce((sum, item) => {
-    const price = parseFloat(item.price) * item?.quantity || 0;
-    return sum + price ;
+    const price = parseFloat(item.price) * item?.quantity || parseFloat(item.originalPrice) * item?.quantity;
+    return sum + price;
   }, 0);
 
   // Calculate discount properly
@@ -523,15 +523,25 @@ export default function Checkout() {
                     </div> */}
                     <h5 className="cart-item-title">{it.title}</h5>
                     {it?.itemType == 'product' && <p style={{
-                      fontSize:'13px',
-                      marginTop:'0'
-                    }} dangerouslySetInnerHTML={{ __html: it?.description }}>{}</p>}
-                    <div className="cart-item-price" style={{
-                      marginTop:'-10px'
+                      fontSize: '13px',
+                      marginTop: '0'
+                    }} dangerouslySetInnerHTML={{ __html: it?.description }}>{ }</p>}
+                    {it?.price != 0 && <div className="cart-item-price" style={{
+                      marginTop: '-10px'
                     }}>
                       <span className="cart-old-price">${(parseFloat(it.originalPrice) || 0).toFixed(2)}</span>
                       <span className="cart-new-price">${(parseFloat(it.price) || 0).toFixed(2)}</span>
-                    </div>
+                    </div>}
+
+                    {(!it?.price && it.originalPrice) && <div className="cart-item-price" style={{
+                      marginTop: '-10px'
+                    }}>
+                      <span className="cart-new-price">${(parseFloat(it.originalPrice) || 0).toFixed(2)}</span>
+                    </div>}
+                    {it?.itemType == 'product' && <p style={{
+                      marginTop: '5px',
+                      fontWeight: '500'
+                    }}>Quantity : {it.quantity}</p>}
                   </div>
                   <div className="cart-item-actions">
                     <button

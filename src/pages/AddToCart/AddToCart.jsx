@@ -34,7 +34,7 @@ function AddToCart() {
   //   clearMessages
   // } = useCouponContext();
 
-  const subtotal = cartItems.reduce((sum, item) => sum + (parseFloat(item.price) * item?.quantity || 0), 0);
+  const subtotal = cartItems.reduce((sum, item) => sum + (parseFloat(item.price) * item?.quantity || parseFloat(item.originalPrice) * item?.quantity), 0);
   // const deliveryFee = 4.78;
 
   // // Calculate discount properly
@@ -93,7 +93,7 @@ function AddToCart() {
   const handleQuantityChange = async (itemId, newQty) => {
     if (newQty < 1) return;
 
-    
+
 
     try {
       const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}frontend/cart/${itemId}`, {
@@ -338,7 +338,7 @@ function AddToCart() {
             color: '#666'
           }}>
             <h3>Your cart is empty</h3>
-            <p>Add some courses to get started!</p>
+            <p>Add some courses or products to get started!</p>
             <button
               onClick={() => navigate('/training')}
               style={{
@@ -354,6 +354,24 @@ function AddToCart() {
               }}
             >
               Browse Courses
+            </button>
+
+            <button
+              onClick={() => navigate('/products')}
+              style={{
+                padding: '12px 24px',
+                backgroundColor: '#6600CC',
+                color: 'white',
+                border: 'none',
+                borderRadius: '6px',
+                cursor: 'pointer',
+                fontSize: '16px',
+                fontWeight: '600',
+                marginTop: '16px',
+                marginLeft: '20px'
+              }}
+            >
+              Browse Products
             </button>
           </div>
         )}
@@ -411,13 +429,17 @@ function AddToCart() {
                 </div> */}
                 <h4>{item.title}</h4>
                 {/* <p>{item?.description}</p> */}
-                <div className="price">
+                {item?.price != 0 && <div className="price">
                   <span className="old-price">${parseFloat(item.originalPrice).toFixed(2)}</span>
                   <span className="new-price">${parseFloat(item.price).toFixed(2)}</span>
-                </div>
+                </div>}
+
+                {(item?.originalPrice && !item?.price) && <div className="price">
+                  <span className="new-price">${parseFloat(item.originalPrice).toFixed(2)}</span>
+                </div>}
                 {item?.itemType === 'product' && (
                   <>
-                  
+
                     <div style={{
                       display: 'flex',
                       alignItems: 'center',
@@ -426,7 +448,7 @@ function AddToCart() {
                     }}>
                       <button
                         onClick={() => handleQuantityChange(item.id, quantities[item.id] - 1)}
-                        disabled={isDeleting || (quantities[item.id] ) <= 1}
+                        disabled={isDeleting || (quantities[item.id]) <= 1}
                         style={{
                           width: '30px',
                           height: '30px',
@@ -435,17 +457,17 @@ function AddToCart() {
                           backgroundColor: 'white',
                           color: '#6600CC',
                           fontSize: '18px',
-                          cursor: (quantities[item.id] ) <= 1 ? 'not-allowed' : 'pointer',
+                          cursor: (quantities[item.id]) <= 1 ? 'not-allowed' : 'pointer',
                           display: 'flex',
                           alignItems: 'center',
                           justifyContent: 'center',
-                          opacity: (quantities[item.id] ) <= 1 ? 0.4 : 1,
+                          opacity: (quantities[item.id]) <= 1 ? 0.4 : 1,
                         }}
                       >
                         −
                       </button>
                       <span style={{ fontWeight: '600', minWidth: '20px', textAlign: 'center' }}>
-                        {quantities[item.id] }
+                        {quantities[item.id]}
                       </span>
                       <button
                         onClick={() => handleQuantityChange(item.id, quantities[item.id] + 1)}
@@ -469,7 +491,7 @@ function AddToCart() {
                     </div>
                   </>
                 )}
-               
+
               </div>
               <div className="item-actions" style={{ opacity: isDeleting ? 0.3 : 1 }}>
                 <button

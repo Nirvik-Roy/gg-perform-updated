@@ -2,16 +2,13 @@ import { useEffect, useState } from 'react'
 import './SingleProduct.css'
 import { Rating } from 'react-simple-star-rating'
 import ProductTabs from './ProductTabs/ProductTabs'
+import SimilarProducts from './SimilarProducts/SimilarProducts'
 import toast from 'react-hot-toast'
 import { addToCartApi } from '../../../utils/cart'
 import { useCart } from '../../../context/CartContext'
 import { getSingleProducts } from '../../../utils/productUtils'
 import { useParams } from 'react-router-dom'
 import CommonLoader from '../../../component/common-loader.jsx'
-import { Swiper, SwiperSlide } from 'swiper/react'
-import { Navigation } from 'swiper/modules'
-import 'swiper/css'
-import 'swiper/css/navigation'
 
 const SingleProduct = () => {
     const { refreshCart, goToCart } = useCart()
@@ -25,8 +22,10 @@ const SingleProduct = () => {
 
     // ─── Variable Product States ───────────────────────────────────
     const [selectedVariant, setSelectedVariant] = useState(null)
+    const [selectedSize, setSelectedSize] = useState(null)
+    const [selectedColor, setSelectedColor] = useState(null)
 
-    // ─── Fetch ─────────────────────────────────────────────────────
+    // ─── Fetch Single Product ──────────────────────────────────────
     const fetchSingleProduct = async () => {
         setLoading(true)
         const res = await getSingleProducts(id)
@@ -38,51 +37,80 @@ const SingleProduct = () => {
         if (id) fetchSingleProduct()
     }, [id])
 
-    // ─── Set Default Variant (first one) ──────────────────────────
-    useEffect(() => {
-        if (singleProducts?.type === 'variable' && singleProducts?.variants?.length > 0) {
-            setSelectedVariant(singleProducts.variants[0])
-        }
-    }, [singleProducts])
-
-    // ─── Reset image when variant changes ─────────────────────────
-    useEffect(() => {
-        setSelectedImage(0)
-        setQuantity(1)
-    }, [selectedVariant])
-
-    // ─── Derived ───────────────────────────────────────────────────
+    // ─── Derived Data ──────────────────────────────────────────────
     const isVariable = singleProducts?.type === 'variable'
 
-    // ── Images ──
-    const displayImages = isVariable
-        ? [selectedVariant?.image, singleProducts?.main_image].filter(Boolean)
+    // ── For single: use gallery images + main image ──
+    const galleryImages = isVariable
+        ? [singleProducts?.main_image].filter(Boolean)
         : [
             singleProducts?.main_image,
             ...(singleProducts?.gallery?.map((g) => g?.image) || [])
         ].filter(Boolean)
 
-    // ── Price ──
-    const currentOriginalPrice = isVariable
-        ? selectedVariant?.original_price
-        : singleProducts?.original_price
+    // ── For variable: use selected variant image or main image ──
+    const displayImages = isVariable && selectedVariant
+        ? [selectedVariant?.image, singleProducts?.main_image].filter(Boolean)
+        : galleryImages
 
-    const currentSalePrice = isVariable
-        ? selectedVariant?.sale_price
-        : singleProducts?.sale_price
+    // ── Get unique sizes & colors from variants ──
+    const uniqueSizes = isVariable
+        ? [...new Map(
+            singleProducts?.variants?.map((v) => [v.size_attribute_value_id, { id: v.size_attribute_value_id, value: v.size }])
+        ).values()]
+        : []
 
-    const discountPercent = currentOriginalPrice && currentSalePrice
-        ? Math.round(((currentOriginalPrice - currentSalePrice) / currentOriginalPrice) * 100)
-        : null
+    const uniqueColors = isVariable
+        ? [...new Map(
+            singleProducts?.variants?.map((v) => [v.color_attribute_value_id, { id: v.color_attribute_value_id, value: v.color }])
+        ).values()]
+        : []
 
-    // ── Stock ──
-    const currentStock = isVariable
-        ? selectedVariant?.stock_quantity
-        : singleProducts?.stock_quantity
+    // ── Find matching variant when size & color selected ──
+    useEffect(() => {
+        if (isVariable && selectedSize && selectedColor) {
+            const matched = singleProducts?.variants?.find(
+                (v) =>
+                    v.size_attribute_value_id === selectedSize &&
+                    v.color_attribute_value_id === selectedColor
+            )
+            setSelectedVariant(matched || null)
+            setSelectedImage(0) // reset image
+        } else {
+            setSelectedVariant(null)
+        }
+    }, [selectedSize, selectedColor, singleProducts])
 
-    // ─── Quantity Handlers ─────────────────────────────────────────
+    // ── Price Display ──
+    const getDisplayPrice = () => {
+        if (isVariable) {
+            if (selectedVariant) {
+                return {
+                    original: selectedVariant.original_price,
+                    sale: selectedVariant.sale_price,
+                }
+            }
+            // Show price range if no variant selected
+            const prices = singleProducts?.variants?.map((v) => v.sale_price || v.original_price) || []
+            const min = Math.min(...prices)
+            const max = Math.max(...prices)
+            return { range: min === max ? `$${min}` : `$${min} - $${max}` }
+        }
+        return {
+            original: singleProducts?.original_price,
+            sale: singleProducts?.sale_price,
+        }
+    }
+
+    const priceInfo = getDisplayPrice()
+
+    // ─── Quantity ──────────────────────────────────────────────────
     const handleIncrement = () => {
-        if (quantity < (currentStock ?? Infinity)) {
+        const maxStock = isVariable
+            ? (selectedVariant?.stock_quantity ?? Infinity)
+            : (singleProducts?.stock_quantity ?? Infinity)
+
+        if (quantity < maxStock) {
             setQuantity((prev) => prev + 1)
         } else {
             toast.error('Maximum stock reached')
@@ -93,30 +121,55 @@ const SingleProduct = () => {
         if (quantity > 1) setQuantity((prev) => prev - 1)
     }
 
-    // ─── Add to Cart ───────────────────────────────────────────────
-    const handleAddToCart = async () => {
+    // ─── Add To Cart — Single ──────────────────────────────────────
+    const addToSingleCart = async () => {
         const token = localStorage.getItem('gg website token')
         if (!token) { goToCart(); return }
 
         try {
-            const payload = isVariable
-                ? {
-                    product_variant_id: selectedVariant?.id,
-                    product_id: singleProducts?.id,
-                    quantity,
-                }
-                : {
-                    product_id: singleProducts?.id,
-                    quantity,
-                }
-
-            const res = await addToCartApi(payload)
+            const res = await addToCartApi({
+                product_id: singleProducts?.id,
+                quantity,
+            })
             if (res?.status === 'success') {
                 toast.success('Product added to cart!')
                 refreshCart()
             }
         } catch (err) {
             toast.error('Failed to add product to cart')
+        }
+    }
+
+    // ─── Add To Cart — Variable ────────────────────────────────────
+    const addVariantProductCart = async () => {
+        const token = localStorage.getItem('gg website token')
+        if (!token) { goToCart(); return }
+
+        if (!selectedSize) { toast.error('Please select a size'); return }
+        if (!selectedColor) { toast.error('Please select a color'); return }
+        if (!selectedVariant) { toast.error('Selected combination not available'); return }
+
+        try {
+            const res = await addToCartApi({
+                product_variant_id: selectedVariant?.id,
+                product_id: singleProducts?.id,
+                quantity,
+            })
+            if (res?.status === 'success') {
+                toast.success('Product added to cart!')
+                refreshCart()
+            }
+        } catch (err) {
+            toast.error('Failed to add product to cart')
+        }
+    }
+
+    // ─── Handle Add to Cart ────────────────────────────────────────
+    const handleAddToCart = () => {
+        if (isVariable) {
+            addVariantProductCart()
+        } else {
+            addToSingleCart()
         }
     }
 
@@ -136,9 +189,7 @@ const SingleProduct = () => {
     return (
         <div className="pd1000">
 
-            {/* ══════════════════════════════════════════════════════
-                TOP SECTION
-            ══════════════════════════════════════════════════════ */}
+            {/* ── Top Section ── */}
             <div className="pd1001">
 
                 {/* ── Thumbnail Column ── */}
@@ -161,11 +212,9 @@ const SingleProduct = () => {
                         alt={singleProducts?.name}
                         className="pd1006"
                     />
-                    {/* Discount Badge on Image */}
-                    {discountPercent && (
-                        <span className='pd_img_discount_badge'>
-                            -{discountPercent}%
-                        </span>
+                    {/* Variable badge */}
+                    {isVariable && (
+                        <span className='pd_variable_badge'>Variable Product</span>
                     )}
                 </div>
 
@@ -182,83 +231,172 @@ const SingleProduct = () => {
                     {/* Name */}
                     <h1 className="pd1008">{singleProducts?.name}</h1>
 
-                    {/* Rating */}
-
-                    {/* ── Price ── */}
-                    <div className='pd_price_wrapper'>
-                        {currentSalePrice ? (
-                            <>
-                                <span className='pd_sale_price'>${currentSalePrice}</span>
-                                <span className='pd_original_price'>${currentOriginalPrice}</span>
-
-                            </>
+                    {/* Price */}
+                    <div className="pd1009">
+                        {priceInfo?.range ? (
+                            <span className='pd_price_range'>{priceInfo.range}</span>
                         ) : (
-                            <span className='pd_sale_price'>${currentOriginalPrice ?? '—'}</span>
-                        )} |
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                                {priceInfo?.sale ? (
+                                    <>
+                                        <span className='pd_sale_price'>${priceInfo.sale}</span>
+                                        <span className='pd_original_price'>${priceInfo.original}</span>
+                                        <span className='pd_discount_badge'>
+                                            {Math.round(
+                                                ((priceInfo.original - priceInfo.sale) / priceInfo.original) * 100
+                                            )}% OFF
+                                        </span>
+                                    </>
+                                ) : (
+                                    <span className='pd_sale_price'>${priceInfo?.original}</span>
+                                )}
+                            </div>
+                        )}
+
+                        {/* Rating */}
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginTop: '8px' }}>
                             <Rating readonly size={18} initialValue={5} />
-                            <span style={{ color: '#666', fontSize: '13px' }}>
+                            <span style={{ color: 'rgba(65,65,65,1)', fontSize: '13px' }}>
                                 (32 reviews)
                             </span>
                         </div>
                     </div>
 
-
                     <div className="pd1010" />
-
-
-
-                    {/* Stock */}
-                    <p className='pd_stock_info' style={currentStock > 0 ? {
-                        background: '#24bb24',
-                        width: 'fit-content',
-                        padding: '5px 10px', color: '#fff',
-                        borderRadius: '3px'
-                    } : {
-                        background: 'red',
-                        width: 'fit-content',
-                        padding: '5px 10px', color: '#fff',
-                        borderRadius: '3px'
-                    }}>
-                        {/* <i className="fa-solid fa-box" /> */}
-                        {currentStock > 0
-                            ? ` In stock`
-                            : 'Out of stock'}
-                    </p>
 
                     {/* Short Description */}
                     {singleProducts?.short_description && (
                         <p className="pd1011" dangerouslySetInnerHTML={{ __html: singleProducts?.short_description }}></p>
                     )}
 
-                    <div className="pd1010" />
+                    {/* ── Variable: Size & Color Selectors ── */}
+                    {isVariable && (
+                        <>
+                            {/* Size Selector */}
+                            {uniqueSizes.length > 0 && (
+                                <div className="pd1014">
+                                    <span className="pd1015">
+                                        Choose Size
+                                        {selectedSize && (
+                                            <span className='pd_selected_label'>
+                                                : {uniqueSizes.find(s => s.id === selectedSize)?.value}
+                                            </span>
+                                        )}
+                                    </span>
+                                    <div className="pd1016">
+                                        {uniqueSizes.map((size) => {
+                                            // ── Check if this size has any available variant with selected color ──
+                                            const hasStock = singleProducts?.variants?.some(
+                                                (v) =>
+                                                    v.size_attribute_value_id === size.id &&
+                                                    (!selectedColor || v.color_attribute_value_id === selectedColor) &&
+                                                    v.stock_quantity > 0
+                                            )
+                                            return (
+                                                <button
+                                                    key={size.id}
+                                                    className={`pd1017 
+                                                        ${selectedSize === size.id ? 'pd1017_active' : ''}
+                                                        ${!hasStock ? 'pd1017_disabled' : ''}
+                                                    `}
+                                                    onClick={() => {
+                                                        setSelectedSize(size.id)
+                                                        setQuantity(1)
+                                                    }}
+                                                    disabled={!hasStock}
+                                                    title={!hasStock ? 'Out of stock' : ''}
+                                                >
+                                                    {size.value}
+                                                    {!hasStock && <span className='pd_out_of_stock_line' />}
+                                                </button>
+                                            )
+                                        })}
+                                    </div>
+                                </div>
+                            )}
 
-                    {/* ── Variable: Variant Info ── */}
-                    {isVariable && selectedVariant && (
-                        <div className='pd_selected_variant_info'>
-                            {/* Size */}
-                            {selectedVariant?.size && (
-                                <div className='pd_attr_chip'>
-                                    <span className='pd_attr_label'>Size</span>
-                                    <span className='pd_attr_value'>{selectedVariant.size}</span>
+                            {/* Color Selector */}
+                            {uniqueColors.length > 0 && (
+                                <div className="pd1014">
+                                    <span className="pd1015">
+                                        Choose Color
+                                        {selectedColor && (
+                                            <span className='pd_selected_label'>
+                                                : {uniqueColors.find(c => c.id === selectedColor)?.value}
+                                            </span>
+                                        )}
+                                    </span>
+                                    <div className="pd1016">
+                                        {uniqueColors.map((color) => {
+                                            const hasStock = singleProducts?.variants?.some(
+                                                (v) =>
+                                                    v.color_attribute_value_id === color.id &&
+                                                    (!selectedSize || v.size_attribute_value_id === selectedSize) &&
+                                                    v.stock_quantity > 0
+                                            )
+                                            return (
+                                                <button
+                                                    key={color.id}
+                                                    className={`pd_color_btn ${selectedColor === color.id ? 'pd_color_btn_active' : ''} ${!hasStock ? 'pd1017_disabled' : ''}`}
+                                                    onClick={() => {
+                                                        setSelectedColor(color.id)
+                                                        setQuantity(1)
+                                                    }}
+                                                    disabled={!hasStock}
+                                                    title={color.value}
+                                                >
+                                                    <span
+                                                        className='pd_color_dot'
+                                                        style={{ background: color.value }}
+                                                    />
+                                                    {color.value}
+                                                    {!hasStock && <span className='pd_out_of_stock_line' />}
+                                                </button>
+                                            )
+                                        })}
+                                    </div>
                                 </div>
                             )}
-                            {/* Color */}
-                            {selectedVariant?.color && (
-                                <div className='pd_attr_chip'>
-                                    <span className='pd_attr_label'>Color</span>
-                                    <span
-                                        className='pd_color_dot_sm'
-                                        style={{ background: selectedVariant.color }}
-                                    />
-                                    <span className='pd_attr_value'>{selectedVariant.color}</span>
+
+                            {/* ── Selected Variant Info ── */}
+                            {selectedVariant && (
+                                <div className='pd_variant_info'>
+                                    <i className="fa-solid fa-circle-check" style={{ color: '#22a855' }} />
+                                    <div>
+                                        <p style={{ margin: 0, fontWeight: '600', fontSize: '14px' }}>
+                                            {selectedVariant.size} - {selectedVariant.color}
+                                        </p>
+                                        <p style={{ margin: 0, fontSize: '13px', color: '#666' }}>
+                                            Stock: {selectedVariant.stock_quantity} available
+                                        </p>
+                                    </div>
                                 </div>
                             )}
-                        </div>
+
+                            {/* ── No Variant Found Warning ── */}
+                            {selectedSize && selectedColor && !selectedVariant && (
+                                <div className='pd_variant_warning'>
+                                    <i className="fa-solid fa-triangle-exclamation" />
+                                    This combination is not available
+                                </div>
+                            )}
+                        </>
+                    )}
+
+                    {/* ── Single: Stock Info ── */}
+                    {!isVariable && singleProducts?.stock_quantity !== null && (
+                        <p className='pd_stock_info'>
+                            <i className="fa-solid fa-box" />
+                            {singleProducts?.stock_quantity > 0
+                                ? `${singleProducts?.stock_quantity} in stock`
+                                : 'Out of stock'}
+                        </p>
                     )}
 
                     {/* ── Quantity & Add to Cart ── */}
                     <div className="ac1000">
+
+                        {/* Quantity */}
                         <div className="ac1001">
                             <button
                                 className="ac1002"
@@ -271,135 +409,29 @@ const SingleProduct = () => {
                             <button
                                 className="ac1002"
                                 onClick={handleIncrement}
-                                disabled={currentStock === 0}
                             >
                                 +
                             </button>
                         </div>
 
+                        {/* Add to Cart */}
                         <button
                             className="ac1004"
                             onClick={handleAddToCart}
-                            disabled={currentStock === 0}
+                            disabled={
+                                isVariable
+                                    ? !selectedVariant || selectedVariant?.stock_quantity === 0
+                                    : singleProducts?.stock_quantity === 0
+                            }
                         >
                             <i className="fa-solid fa-cart-shopping" />
-                            {currentStock === 0 ? 'Out of Stock' : 'Add to Cart'}
+                            {isVariable && !selectedVariant
+                                ? 'Select Options'
+                                : 'Add to Cart'}
                         </button>
                     </div>
                 </div>
             </div>
-
-            {/* ══════════════════════════════════════════════════════
-                VARIANT SLIDER (only for variable products)
-            ══════════════════════════════════════════════════════ */}
-            {isVariable && singleProducts?.variants?.length > 0 && (
-                <div className='pd_variant_section'>
-
-                    <div className='pd_variant_section_head'>
-                        <h3 className='pd_variant_section_title'>
-                            Available Variants
-                        </h3>
-                        <span className='pd_variant_count'>
-                            {singleProducts.variants.length} variants
-                        </span>
-                    </div>
-
-                    <Swiper
-                        modules={[Navigation]}
-                        navigation
-                        spaceBetween={16}
-                        slidesPerView={'auto'}
-                        className='pd_variant_swiper'
-                    >
-                        {singleProducts.variants.map((variant, i) => {
-                            const isSelected = selectedVariant?.id === variant.id
-                            const isOutOfStock = variant.stock_quantity === 0
-
-                            return (
-                                <SwiperSlide
-                                    key={variant.id}
-                                    style={{ width: 'auto' }}
-                                >
-                                    <div
-                                        className={`pd_variant_card 
-                                            ${isSelected ? 'pd_variant_card_active' : ''}
-                                            ${isOutOfStock ? 'pd_variant_card_oos' : ''}
-                                        `}
-                                        onClick={() => {
-                                            if (!isOutOfStock) setSelectedVariant(variant)
-                                        }}
-                                    >
-                                        {/* ── Variant Image ── */}
-                                        <div className='pd_variant_img_wrapper'>
-                                            <img
-                                                src={variant?.image || singleProducts?.main_image}
-                                                alt={`${variant.size} - ${variant.color}`}
-                                                className='pd_variant_img'
-                                            />
-                                            {/* Selected Check */}
-                                            {isSelected && (
-                                                <div className='pd_variant_check'>
-                                                    <i className="fa-solid fa-check" />
-                                                </div>
-                                            )}
-                                            {/* Out of Stock Overlay */}
-                                            {isOutOfStock && (
-                                                <div className='pd_variant_oos_overlay'>
-                                                    <span>Out of Stock</span>
-                                                </div>
-                                            )}
-                                        </div>
-
-                                        {/* ── Variant Details ── */}
-                                        <div className='pd_variant_details'>
-                                            {/* Size & Color */}
-                                            <div className='pd_variant_attrs'>
-                                                {variant.size && (
-                                                    <span className='pd_variant_size_tag'>
-                                                        {variant.size}
-                                                    </span>
-                                                )}
-                                                {variant.color && (
-                                                    <span
-                                                        className='pd_variant_color_dot'
-                                                        style={{ background: variant.color }}
-                                                        title={variant.color}
-                                                    />
-                                                )}
-                                            </div>
-
-                                            {/* Price */}
-                                            <div className='pd_variant_price_wrapper'>
-                                                {variant.sale_price ? (
-                                                    <>
-                                                        <span className='pd_variant_sale'>
-                                                            ${variant.sale_price}
-                                                        </span>
-                                                        <span className='pd_variant_original'>
-                                                            ${variant.original_price}
-                                                        </span>
-                                                    </>
-                                                ) : (
-                                                    <span className='pd_variant_sale'>
-                                                        ${variant.original_price}
-                                                    </span>
-                                                )}
-                                            </div>
-
-                                            {/* Stock */}
-                                            <p className='pd_variant_stock'>
-                                                {isOutOfStock
-                                                    ? 'Out of stock'
-                                                    : `${variant.stock_quantity} left`}
-                                            </p>
-                                        </div>
-                                    </div>
-                                </SwiperSlide>
-                            )
-                        })}
-                    </Swiper>
-                </div>
-            )}
 
             {/* ── Product Tabs ── */}
             <ProductTabs

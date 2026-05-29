@@ -487,6 +487,67 @@
     font-size: 13px;
     font-weight: 800;
 }
+/* ── Color Buttons ── */
+.pd_color_btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 14px;
+    border: 2px solid #ddd;
+    border-radius: 20px;
+    background: #fff;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+}
+
+.pd_color_btn:hover {
+    border-color: #6600CC;
+}
+
+.pd_color_btn_active {
+    border-color: #6600CC;
+    background: #f0e6ff;
+    color: #6600CC;
+}
+
+.pd_color_dot {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 1.5px solid #eee;
+    flex-shrink: 0;
+    display: inline-block;
+}
+
+/* ── Variant Info ── */
+.pd_variant_info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    background: #e6fff0;
+    border: 1px solid #b3f0cc;
+    border-radius: 10px;
+    margin-top: 12px;
+    font-size: 14px;
+}
+
+.pd_variant_warning {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 14px;
+    background: #fff3cd;
+    border: 1px solid #f0c14b;
+    border-radius: 10px;
+    margin-top: 10px;
+    font-size: 13px;
+    color: #856404;
+    font-weight: 500;
+}
 
 /* ── Variant Card ── */
 .pd_variant_card {
